@@ -1,0 +1,848 @@
+<!--
+  Fernando Sanchez — Portfolio + printable CV
+  How to edit:
+    - All copy lives in the `translations` object near the bottom of <script>. Each key has an
+      `en` and `es` value; the on-screen text updates automatically when you change either.
+    - The "Selected Projects" section (search for id="projects") has 3 placeholder cards.
+      Replace each one with a real repo: title, one-line impact statement, tech tags and a link.
+    - The printable, one-page CV lives in the block with id="print-cv" near the end of <body>.
+      It reuses the same translation keys as the main page, so editing content above keeps it in sync.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fernando Sanchez — Software Engineer &amp; AI-Assisted Developer</title>
+<meta name="description" content="Fernando Sanchez — IT Coordinator, .NET Developer and AI-Assisted Engineer. C#, ASP.NET Core, SQL Server, and daily AI-assisted engineering with Claude Code, Antigravity and more." />
+<meta name="theme-color" content="#05070d" />
+<meta property="og:title" content="Fernando Sanchez — Software Engineer & AI-Assisted Developer" />
+<meta property="og:description" content="IT Coordinator, .NET Developer and AI-Assisted Engineer building enterprise systems in C# / ASP.NET Core / SQL Server." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2334e5ff'/%3E%3Cstop offset='1' stop-color='%23a78bfa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%2305070d'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-weight='800' font-size='28' fill='url(%23g)' text-anchor='middle'%3EFS%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#05070d;
+    --bg-soft:#0a0e1a;
+    --surface:rgba(255,255,255,0.04);
+    --surface-strong:rgba(255,255,255,0.07);
+    --border:rgba(255,255,255,0.09);
+    --border-strong:rgba(255,255,255,0.18);
+    --text:#edf0f7;
+    --text-muted:#9aa3b8;
+    --text-dim:#5f6779;
+    --cyan:#34e5ff;
+    --violet:#a78bfa;
+    --gradient:linear-gradient(135deg,var(--cyan),var(--violet));
+    --glow:0 0 60px rgba(52,229,255,0.16);
+    --radius:16px;
+    --maxw:1120px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .mono{font-family:'JetBrains Mono',monospace;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  ::selection{background:var(--cyan);color:#05070d;}
+
+  /* ── scroll reveal ── */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.is-visible{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1;transform:none;transition:none;}
+    *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;}
+  }
+
+  /* ── nav ── */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    background:rgba(5,7,13,0.72);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;max-width:var(--maxw);margin:0 auto;}
+  .brand{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:1.05rem;background:var(--gradient);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:.02em;}
+  nav.links{display:flex;gap:26px;list-style:none;}
+  nav.links a{font-size:.86rem;color:var(--text-muted);text-decoration:none;position:relative;padding:4px 0;transition:color .2s;}
+  nav.links a:hover{color:var(--text);}
+  nav.links a::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:1.5px;background:var(--gradient);transition:width .25s ease;}
+  nav.links a:hover::after{width:100%;}
+  .nav-right{display:flex;align-items:center;gap:10px;}
+  .lang-toggle{display:flex;border:1px solid var(--border-strong);border-radius:999px;overflow:hidden;font-family:'JetBrains Mono',monospace;font-size:.72rem;}
+  .lang-toggle button{background:transparent;border:none;color:var(--text-dim);padding:6px 11px;cursor:pointer;font-family:inherit;font-size:inherit;transition:.2s;}
+  .lang-toggle button.active{background:var(--gradient);color:#05070d;font-weight:700;}
+  .btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;font-size:.86rem;font-weight:600;padding:10px 20px;cursor:pointer;text-decoration:none;border:1px solid transparent;transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap;}
+  .btn-primary{background:var(--gradient);color:#05070d;}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:var(--glow);}
+  .btn-ghost{border-color:var(--border-strong);color:var(--text);background:transparent;}
+  .btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);}
+  .btn-sm{padding:8px 16px;font-size:.78rem;}
+  @media (max-width:860px){ nav.links{display:none;} }
+
+  /* ── hero ── */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:120px 0 64px;overflow:hidden;}
+  .aura{position:absolute;border-radius:50%;filter:blur(90px);opacity:.35;z-index:0;animation:drift 18s ease-in-out infinite alternate;}
+  .aura-1{width:420px;height:420px;background:var(--cyan);top:-120px;left:-80px;}
+  .aura-2{width:460px;height:460px;background:var(--violet);bottom:-140px;right:-100px;animation-delay:3s;}
+  @keyframes drift{from{transform:translate(0,0) scale(1);}to{transform:translate(40px,30px) scale(1.08);}}
+  .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;}
+  @media (max-width:860px){ .hero-inner{grid-template-columns:1fr;text-align:center;} .hero-photo{order:-1;margin:0 auto;} }
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:18px;}
+  .eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--gradient);box-shadow:0 0 12px var(--cyan);}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:800;line-height:1.03;letter-spacing:-.02em;background:linear-gradient(135deg,#fff 40%,var(--cyan) 75%,var(--violet) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:18px;}
+  .hero .lede{font-size:1.08rem;color:var(--text-muted);max-width:52ch;margin-bottom:22px;}
+  @media (max-width:860px){ .hero .lede{margin-left:auto;margin-right:auto;} }
+  .hero .meta{display:flex;align-items:center;gap:8px;font-size:.86rem;color:var(--text-dim);margin-bottom:30px;}
+  @media (max-width:860px){ .hero .meta{justify-content:center;} }
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:8px;}
+  @media (max-width:860px){ .cta-row{justify-content:center;} }
+  .hero-photo{position:relative;width:min(320px,80vw);aspect-ratio:1/1;justify-self:center;}
+  .hero-photo .ring{position:absolute;inset:0;border-radius:32px;padding:3px;background:var(--gradient);box-shadow:var(--glow);}
+  .hero-photo .ring img{width:100%;height:100%;object-fit:cover;object-position:center 18%;border-radius:29px;background:var(--bg-soft);}
+  .hero-photo .badge{position:absolute;left:-18px;bottom:-16px;background:var(--bg-soft);border:1px solid var(--border-strong);border-radius:999px;padding:8px 14px;display:flex;align-items:center;gap:8px;font-size:.76rem;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.4);}
+  .hero-photo .badge .dot{width:8px;height:8px;border-radius:50%;background:#34ffa0;box-shadow:0 0 10px #34ffa0;}
+  @media (max-width:860px){ .hero-photo .badge{left:50%;transform:translateX(-50%);bottom:-14px;} }
+  .scroll-cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--text-dim);letter-spacing:.1em;display:flex;flex-direction:column;align-items:center;gap:6px;}
+  .scroll-cue span{width:1px;height:34px;background:linear-gradient(var(--cyan),transparent);animation:scrollcue 1.8s ease-in-out infinite;}
+  @keyframes scrollcue{0%{opacity:0;transform:scaleY(0);transform-origin:top;}50%{opacity:1;transform:scaleY(1);transform-origin:top;}100%{opacity:0;transform:scaleY(1);transform-origin:bottom;}}
+  @media (max-width:860px){ .scroll-cue{display:none;} }
+
+  /* ── sections ── */
+  section{padding:100px 0;position:relative;}
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);margin-bottom:12px;}
+  .section-title{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:800;letter-spacing:-.01em;margin-bottom:14px;}
+  .section-intro{color:var(--text-muted);font-size:1rem;}
+
+  /* ── about / metrics ── */
+  #about .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start;}
+  @media (max-width:860px){ #about .about-grid{grid-template-columns:1fr;} }
+  #about p{color:var(--text-muted);font-size:1.02rem;}
+  #about p strong{color:var(--text);font-weight:600;}
+  .metrics{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .metric{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px 18px;transition:transform .25s,border-color .25s,box-shadow .25s;}
+  .metric:hover{transform:translateY(-4px);border-color:var(--border-strong);box-shadow:var(--glow);}
+  .metric-num{font-size:2rem;font-weight:800;background:var(--gradient);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .metric-lbl{font-size:.8rem;color:var(--text-dim);margin-top:4px;}
+
+  /* ── experience timeline ── */
+  .timeline{position:relative;padding-left:34px;}
+  .timeline::before{content:'';position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--cyan),var(--violet));opacity:.5;}
+  .tl-item{position:relative;margin-bottom:34px;}
+  .tl-item:last-child{margin-bottom:0;}
+  .tl-item::before{content:'';position:absolute;left:-34px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--bg);border:2.5px solid var(--cyan);box-shadow:0 0 14px var(--cyan);}
+  .tl-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 26px;transition:border-color .25s,transform .25s;}
+  .tl-card:hover{border-color:var(--border-strong);transform:translateY(-3px);}
+  .tl-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:2px;}
+  .tl-title{font-size:1.12rem;font-weight:700;}
+  .tl-period{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--cyan);background:rgba(52,229,255,.08);border:1px solid rgba(52,229,255,.25);padding:3px 10px;border-radius:999px;white-space:nowrap;}
+  .tl-company{color:var(--text-dim);font-size:.86rem;margin-bottom:14px;}
+  .tl-card ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+  .tl-card li{position:relative;padding-left:20px;color:var(--text-muted);font-size:.94rem;}
+  .tl-card li::before{content:'▸';position:absolute;left:0;color:var(--violet);}
+  .tl-card li strong{color:var(--text);font-weight:600;}
+
+  /* ── stack ── */
+  .stack-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;}
+  .stack-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;}
+  .stack-card h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin-bottom:14px;font-family:'JetBrains Mono',monospace;}
+  .tag{display:inline-flex;align-items:center;font-size:.8rem;font-weight:500;border:1px solid var(--border-strong);color:var(--text-muted);padding:5px 11px;border-radius:999px;margin:0 6px 6px 0;transition:.2s;}
+  .tag:hover{border-color:var(--cyan);color:var(--text);}
+  .tag.strong{background:var(--gradient);color:#05070d;font-weight:700;border-color:transparent;}
+
+  /* ── AI section ── */
+  #ai{background:radial-gradient(ellipse at 20% 20%,rgba(52,229,255,.06),transparent 55%),radial-gradient(ellipse at 80% 80%,rgba(167,139,250,.06),transparent 55%);}
+  .ai-panel{border:1px solid var(--border-strong);border-radius:20px;padding:40px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0));}
+  .ai-cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:8px;}
+  .ai-cat h4{font-size:1rem;font-weight:700;margin-bottom:6px;}
+  .ai-cat p{color:var(--text-dim);font-size:.86rem;margin-bottom:12px;}
+  .ai-practices{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px;padding-top:26px;border-top:1px solid var(--border);}
+
+  /* ── projects ── */
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;}
+  .project-empty{border:1.5px dashed var(--border-strong);border-radius:var(--radius);padding:32px 22px;text-align:center;color:var(--text-dim);transition:.25s;}
+  .project-empty:hover{border-color:var(--cyan);color:var(--text-muted);}
+  .project-empty .plus{width:38px;height:38px;margin:0 auto 14px;border-radius:50%;border:1.5px solid var(--border-strong);display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--text-dim);}
+  .project-empty h4{font-size:.98rem;color:var(--text-muted);margin-bottom:8px;font-weight:700;}
+  .project-empty p{font-size:.82rem;line-height:1.5;}
+  .project-empty .tag{opacity:.45;font-size:.72rem;}
+  .project-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px 24px;transition:transform .25s,border-color .25s,box-shadow .25s;}
+  .project-card:hover{transform:translateY(-4px);border-color:var(--border-strong);box-shadow:var(--glow);}
+  .project-card h4{font-size:1.05rem;font-weight:700;margin-bottom:10px;}
+  .project-card p{color:var(--text-muted);font-size:.9rem;line-height:1.55;margin-bottom:16px;}
+  .project-badge{display:flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-dim);margin-top:14px;}
+  .project-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan);flex-shrink:0;}
+
+  /* ── education / certs ── */
+  .ec-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+  @media (max-width:860px){ .ec-grid{grid-template-columns:1fr;} }
+  .edu-degree{font-size:1.05rem;font-weight:700;}
+  .edu-school{color:var(--text-muted);font-size:.9rem;margin-top:2px;}
+  .edu-period{color:var(--cyan);font-family:'JetBrains Mono',monospace;font-size:.78rem;margin-top:6px;}
+  .cert-item{display:flex;gap:12px;margin-bottom:16px;}
+  .cert-item:last-child{margin-bottom:0;}
+  .cert-dot{width:7px;height:7px;border-radius:50%;background:var(--gradient);margin-top:7px;flex-shrink:0;}
+  .cert-title{font-weight:600;font-size:.95rem;}
+  .cert-issuer{color:var(--text-dim);font-size:.82rem;}
+
+  /* ── languages ── */
+  .lang-row{margin-bottom:18px;}
+  .lang-row:last-child{margin-bottom:0;}
+  .lang-top{display:flex;justify-content:space-between;font-size:.9rem;margin-bottom:6px;}
+  .lang-top .name{font-weight:600;}
+  .lang-top .level{color:var(--text-dim);font-size:.82rem;}
+  .lang-bar{height:5px;border-radius:3px;background:var(--surface-strong);overflow:hidden;}
+  .lang-fill{height:100%;background:var(--gradient);border-radius:3px;}
+  .lang-split{display:flex;gap:6px;}
+  .lang-split .lang-bar{flex:1;}
+
+  /* ── footer / contact ── */
+  #contact{background:var(--bg-soft);border-top:1px solid var(--border);}
+  .contact-inner{text-align:center;max-width:640px;margin:0 auto;}
+  #contact h2{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;margin-bottom:16px;}
+  #contact p{color:var(--text-muted);margin-bottom:34px;}
+  .contact-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:40px;}
+  .chip{display:flex;align-items:center;gap:8px;border:1px solid var(--border-strong);border-radius:999px;padding:9px 16px;font-size:.85rem;text-decoration:none;color:var(--text-muted);transition:.2s;}
+  .chip:hover{border-color:var(--cyan);color:var(--text);}
+  .chip svg{width:15px;height:15px;flex-shrink:0;color:var(--cyan);}
+  .footer-bottom{border-top:1px solid var(--border);padding:26px 0;text-align:center;color:var(--text-dim);font-size:.78rem;}
+  .footer-bottom strong{color:var(--text-muted);}
+
+  /* ── print CV (hidden on screen) ── */
+  #print-cv{display:none;}
+  @media print{
+    body > header.nav,
+    body > header.hero,
+    body > main,
+    body > footer#contact{ display:none !important; }
+    #print-cv{ display:block !important; }
+    html,body{ background:#fff; color:#0f172a; }
+    @page{ margin:0; size:A4; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">FS.</a>
+    <nav class="links">
+      <a href="#about" data-i18n="nav_about">About</a>
+      <a href="#experience" data-i18n="nav_experience">Experience</a>
+      <a href="#stack" data-i18n="nav_stack">Stack</a>
+      <a href="#ai" data-i18n="nav_ai">AI</a>
+      <a href="#projects" data-i18n="nav_projects">Projects</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="es">ES</button>
+      </div>
+      <button type="button" class="btn btn-ghost btn-sm" onclick="window.print()" data-i18n="nav_resume">Resume</button>
+    </div>
+  </div>
+</header>
+
+<!-- ══ HERO ══ -->
+<header class="hero" id="top">
+  <div class="aura aura-1"></div>
+  <div class="aura aura-2"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow" data-i18n="hero_eyebrow">IT Coordinator · .NET Developer · AI-Assisted Engineer</div>
+      <h1>Fernando Sanchez</h1>
+      <p class="lede" data-i18n="hero_lede">I build reliable enterprise systems in C# and .NET, lead technical teams, and ship faster by pairing with AI — Claude Code, Antigravity, Copilot and beyond — without cutting corners on quality.</p>
+      <div class="meta">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span data-i18n="hero_meta">Katuété, Canindeyú, Paraguay · Remote-ready</span>
+      </div>
+      <div class="cta-row">
+        <button type="button" class="btn btn-primary" onclick="window.print()" data-i18n="hero_cta_primary">Download CV</button>
+        <a href="#contact" class="btn btn-ghost" data-i18n="hero_cta_secondary">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="ring"><img src="assets/foto.jpg" alt="Fernando Sanchez" /></div>
+      <div class="badge"><span class="dot"></span><span data-i18n="hero_badge">Open to remote work</span></div>
+    </div>
+  </div>
+  <div class="scroll-cue mono"><span></span>SCROLL</div>
+</header>
+
+<main>
+
+  <!-- ══ ABOUT ══ -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="reveal">
+        <div class="section-eyebrow" data-i18n="about_eyebrow">Profile</div>
+        <h2 class="section-title" data-i18n="about_title">About me</h2>
+        <p data-i18n="about_summary">Systems Engineer and IT Coordinator with <strong>6+ years</strong> of hands-on experience in enterprise software development and technology leadership. Core expertise in <strong>C#, ASP.NET Core, .NET and SQL Server</strong> — designing REST APIs, internal platforms and data-driven systems from architecture to deployment. Currently leading IT operations at SisPrime Sistemas, where I manage cross-functional teams and infrastructure end to end. A committed practitioner of <strong>AI-assisted engineering</strong>: I use coding agents and LLMs daily to move faster, review more code, and keep quality high — not to replace engineering judgment, but to extend it.</p>
+      </div>
+      <div class="metrics reveal">
+        <div class="metric"><div class="metric-num">6+</div><div class="metric-lbl" data-i18n="metric_years">Years in IT</div></div>
+        <div class="metric"><div class="metric-num">4</div><div class="metric-lbl" data-i18n="metric_langs">Languages Spoken</div></div>
+        <div class="metric"><div class="metric-num">3</div><div class="metric-lbl" data-i18n="metric_certs">Certifications</div></div>
+        <div class="metric"><div class="metric-num">10+</div><div class="metric-lbl" data-i18n="metric_ai">AI Tools &amp; Models Used</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ EXPERIENCE ══ -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-eyebrow" data-i18n="exp_eyebrow">Career</div>
+        <h2 class="section-title" data-i18n="nav_experience">Experience</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="tl-card">
+            <div class="tl-head">
+              <div class="tl-title" data-i18n="exp1_title">IT Coordinator &amp; .NET Developer</div>
+              <div class="tl-period" data-i18n="exp1_period">Apr 2025 — Present</div>
+            </div>
+            <div class="tl-company" data-i18n="exp1_company">SisPrime Sistemas · Paraguay (On-site / Remote)</div>
+            <ul>
+              <li data-i18n="exp1_b1">Lead architecture and development of enterprise web systems in <strong>C#, ASP.NET Core and SQL Server</strong>, focused on availability and scalability.</li>
+              <li data-i18n="exp1_b2">Design REST APIs and internal management modules, integrating third-party services and automating business processes.</li>
+              <li data-i18n="exp1_b3">Apply AI-assisted programming daily — <strong>Claude Code, Antigravity</strong>, GitHub Copilot and Gemini — to accelerate delivery and raise code quality without lowering the bar on review.</li>
+              <li data-i18n="exp1_b4">Manage IT infrastructure: Windows/Linux servers, Active Directory, LAN/WAN, corporate email and backup protocols.</li>
+              <li data-i18n="exp1_b5">Lead the technical team under SCRUM/Kanban, run code reviews and mentor junior developers.</li>
+              <li data-i18n="exp1_b6">Build operational reports and KPIs with SQL Server stored procedures and data visualization.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-card">
+            <div class="tl-head">
+              <div class="tl-title" data-i18n="exp2_title">Network Technician</div>
+              <div class="tl-period" data-i18n="exp2_period">2021 — 2022</div>
+            </div>
+            <div class="tl-company" data-i18n="exp2_company">TempuS Net · Paraguay</div>
+            <ul>
+              <li data-i18n="exp2_b1">Deployed and maintained LAN/WAN and WiFi infrastructure for corporate clients; configured routers, switches and access points.</li>
+              <li data-i18n="exp2_b2">Performed hardware diagnostics and on-site technical support, keeping SLA compliance.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ STACK ══ -->
+  <section id="stack">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-eyebrow" data-i18n="stack_eyebrow">Toolbox</div>
+        <h2 class="section-title" data-i18n="nav_stack">Tech Stack</h2>
+      </div>
+      <div class="stack-grid reveal">
+        <div class="stack-card">
+          <h3 data-i18n="stack_backend">Backend</h3>
+          <span class="tag strong">C#</span><span class="tag strong">ASP.NET Core</span><span class="tag strong">.NET</span><span class="tag">PHP</span><span class="tag">Laravel</span>
+        </div>
+        <div class="stack-card">
+          <h3 data-i18n="stack_db">Database</h3>
+          <span class="tag strong">SQL Server</span><span class="tag">MySQL</span><span class="tag">EF Core</span><span class="tag" data-i18n="stack_storedprocs">Stored Procedures</span>
+        </div>
+        <div class="stack-card">
+          <h3 data-i18n="stack_frontend">Frontend &amp; APIs</h3>
+          <span class="tag">JavaScript</span><span class="tag">HTML5 / CSS3</span><span class="tag">REST APIs</span><span class="tag">Swagger</span>
+        </div>
+        <div class="stack-card">
+          <h3 data-i18n="stack_infra">Infrastructure</h3>
+          <span class="tag">Linux</span><span class="tag">Windows Server</span><span class="tag">Active Directory</span><span class="tag">LAN/WAN</span>
+        </div>
+        <div class="stack-card">
+          <h3 data-i18n="stack_methods">Methodologies</h3>
+          <span class="tag">SCRUM</span><span class="tag">Kanban</span><span class="tag" data-i18n="stack_cleanarch">Clean Architecture</span><span class="tag" data-i18n="stack_repopattern">Repository Pattern</span><span class="tag" data-i18n="stack_itsec">IT Security</span><span class="tag" data-i18n="stack_datamodel">Data Modeling</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ AI-ASSISTED ENGINEERING ══ -->
+  <section id="ai">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-eyebrow" data-i18n="ai_eyebrow">Ai-Assisted Engineering</div>
+        <h2 class="section-title" data-i18n="ai_title">Engineering with AI, not just around it</h2>
+        <p class="section-intro" data-i18n="ai_intro">AI is part of how I design, write and review software every day — from planning a feature to shipping it. I keep a close eye on the fast-moving model landscape so I always reach for the right tool for the job.</p>
+      </div>
+      <div class="ai-panel reveal">
+        <div class="ai-cats">
+          <div class="ai-cat">
+            <h4 data-i18n="ai_cat1_title">Coding Agents &amp; IDEs</h4>
+            <p data-i18n="ai_cat1_desc">Agentic pair programming for real feature work — from scaffolding to refactors to debugging production issues.</p>
+            <span class="tag strong">Claude Code</span><span class="tag strong">Antigravity</span><span class="tag">GitHub Copilot</span><span class="tag">OpenAI Codex</span>
+          </div>
+          <div class="ai-cat">
+            <h4 data-i18n="ai_cat2_title">LLMs &amp; Chat Models</h4>
+            <p data-i18n="ai_cat2_desc">Daily drivers for architecture discussions, documentation, code review and problem-solving.</p>
+            <span class="tag">Claude</span><span class="tag">GPT</span><span class="tag">Gemini</span>
+          </div>
+          <div class="ai-cat">
+            <h4 data-i18n="ai_cat3_title">Emerging Models I Track</h4>
+            <p data-i18n="ai_cat3_desc">Staying current with the broader model ecosystem, including leading Chinese labs, to evaluate cost/performance trade-offs.</p>
+            <span class="tag">DeepSeek</span><span class="tag">Qwen</span><span class="tag">Kimi</span>
+          </div>
+        </div>
+        <div class="ai-practices">
+          <span class="tag strong">Prompt Engineering</span>
+          <span class="tag strong">AI Pair Programming</span>
+          <span class="tag" data-i18n="ai_practice_agentic">Agentic Development</span>
+          <span class="tag" data-i18n="ai_practice_spec">Spec-Driven Development</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PROJECTS ══ -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-eyebrow" data-i18n="proj_eyebrow">Work</div>
+        <h2 class="section-title" data-i18n="proj_title">Selected Projects</h2>
+        <p class="section-intro" data-i18n="proj_intro">Proprietary enterprise systems built at SisPrime Sistemas — described here since the code isn't public.</p>
+      </div>
+      <div class="projects-grid reveal">
+        <div class="project-card">
+          <h4 data-i18n="proj1_title">SisTransp — Fleet &amp; Carrier Management System</h4>
+          <p data-i18n="proj1_desc">End-to-end platform for managing carrier and in-house fleet operations: load orders, driver commissions, per-diem allowances, maintenance tracking and monthly settlement runs — replacing manual spreadsheets with a single source of truth.</p>
+          <div><span class="tag">C#</span><span class="tag">ASP.NET Core</span><span class="tag">SQL Server</span><span class="tag">REST API</span></div>
+          <div class="project-badge" data-i18n="proj_badge">Internal project · SisPrime Sistemas</div>
+        </div>
+        <div class="project-card">
+          <h4 data-i18n="proj2_title">Textile Production Control Module</h4>
+          <p data-i18n="proj2_desc">Production-tracking module for a textile manufacturing line: from raw yarn intake and batch loading through spinning/weaving stages to finished-goods output, monitoring yield, waste and machine downtime in real time for plant supervisors.</p>
+          <div><span class="tag">C#</span><span class="tag">ASP.NET Core</span><span class="tag">SQL Server</span><span class="tag">Reporting</span></div>
+          <div class="project-badge" data-i18n="proj_badge">Internal project · SisPrime Sistemas</div>
+        </div>
+        <div class="project-card">
+          <h4 data-i18n="proj3_title">Enterprise UI Modernization</h4>
+          <p data-i18n="proj3_desc">Full front-end refactor of the company's core system: rebuilt legacy screens with a modern, componentized UI, a consistent design language and richer interactivity — improving usability and cutting training time for new operators.</p>
+          <div><span class="tag">JavaScript</span><span class="tag">HTML5/CSS3</span><span class="tag">UI/UX</span></div>
+          <div class="project-badge" data-i18n="proj_badge">Internal project · SisPrime Sistemas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ EDUCATION & CERTS ══ -->
+  <section id="education">
+    <div class="wrap ec-grid">
+      <div class="reveal">
+        <div class="section-eyebrow" data-i18n="edu_eyebrow">Academics</div>
+        <h2 class="section-title" data-i18n="nav_education_title">Education</h2>
+        <div class="edu-degree" data-i18n="edu_degree">B.Eng. in Computer Systems Engineering</div>
+        <div class="edu-school" data-i18n="edu_school">Universidad Nacional del Caaguazú, Paraguay</div>
+        <div class="edu-period">2017 — 2023</div>
+      </div>
+      <div class="reveal">
+        <div class="section-eyebrow" data-i18n="certs_eyebrow">Credentials</div>
+        <h2 class="section-title" data-i18n="nav_certs_title">Certifications</h2>
+        <div class="cert-item">
+          <div class="cert-dot"></div>
+          <div><div class="cert-title" data-i18n="cert1_title">Ethical Hacking — Red Team</div><div class="cert-issuer" data-i18n="cert1_issuer">Hacker Mentor · International</div></div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-dot"></div>
+          <div><div class="cert-title" data-i18n="cert2_title">Advanced PC Operator</div><div class="cert-issuer">CIE · Katuété</div></div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-dot"></div>
+          <div><div class="cert-title" data-i18n="cert3_title">Computer Technician</div><div class="cert-issuer">CIE · Katuété</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ LANGUAGES ══ -->
+  <section id="languages">
+    <div class="wrap" style="max-width:640px;">
+      <div class="section-head reveal">
+        <div class="section-eyebrow" data-i18n="lang_eyebrow">Communication</div>
+        <h2 class="section-title" data-i18n="nav_languages_title">Languages</h2>
+      </div>
+      <div class="reveal">
+        <div class="lang-row">
+          <div class="lang-top"><span class="name" data-i18n="lang_es">Spanish</span><span class="level" data-i18n="level_native">Native</span></div>
+          <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+        </div>
+        <div class="lang-row">
+          <div class="lang-top"><span class="name" data-i18n="lang_pt">Portuguese</span><span class="level" data-i18n="level_native">Native</span></div>
+          <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+        </div>
+        <div class="lang-row">
+          <div class="lang-top"><span class="name" data-i18n="lang_gn">Guaraní</span><span class="level" data-i18n="level_native">Native</span></div>
+          <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+        </div>
+        <div class="lang-row">
+          <div class="lang-top"><span class="name" data-i18n="lang_en">English</span><span class="level" data-i18n="level_en_summary">Reading &amp; Writing: Advanced · Spoken: Conversational</span></div>
+          <div class="lang-split">
+            <div class="lang-bar" title="Reading &amp; Writing"><div class="lang-fill" style="width:88%"></div></div>
+            <div class="lang-bar" title="Spoken"><div class="lang-fill" style="width:55%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══ CONTACT ══ -->
+<footer id="contact">
+  <div class="wrap contact-inner reveal">
+    <h2 data-i18n="contact_title">Let's talk</h2>
+    <p data-i18n="contact_text">Open to remote .NET / backend engineering roles where AI-assisted delivery is valued. Reach out — I reply fast.</p>
+    <div class="contact-chips">
+      <a class="chip" href="tel:+595983240491">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.9a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +595 983 240 491
+      </a>
+      <a class="chip" href="mailto:fernando_sh99@outlook.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        fernando_sh99@outlook.com
+      </a>
+      <a class="chip" href="https://www.linkedin.com/in/fernando-sanchez-hartwig-8a424b220" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a class="chip" href="https://github.com/nandosanchez14" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        GitHub
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-i18n="footer_credit">Designed &amp; built by <strong>Fernando Sanchez</strong>, with AI-assisted engineering.</span>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     PRINT-ONLY CV — hidden on screen, shown only when printing / exporting
+     to PDF (button "Download CV" / Ctrl+P). Kept as its own block so it can
+     use a clean, proven single-page A4 layout independent of the portfolio
+     styling above. Uses the same data-i18n keys, so language + content stay
+     in sync automatically.
+     ══════════════════════════════════════════════════════════════════════ -->
+<div id="print-cv">
+<style>
+  #print-cv{ font-family:'Inter',sans-serif; font-size:9pt; line-height:1.42; color:#0f172a; }
+  #print-cv .page{ width:210mm; min-height:297mm; padding:11mm 12mm 10mm 12mm; }
+  #print-cv .p-header{ display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:12px; padding-bottom:7px; border-bottom:2.5px solid #2563eb; margin-bottom:8px; }
+  #print-cv .p-photo{ width:22mm; height:22mm; border-radius:50%; overflow:hidden; border:2px solid #2563eb; flex-shrink:0; }
+  #print-cv .p-photo img{ width:100%; height:100%; object-fit:cover; object-position:center 22%; }
+  #print-cv .p-name{ font-size:22pt; font-weight:800; letter-spacing:-.5px; }
+  #print-cv .p-title{ font-size:8.5pt; font-weight:600; color:#2563eb; text-transform:uppercase; letter-spacing:.06em; margin-top:3px; }
+  #print-cv .p-contact{ display:flex; flex-direction:column; align-items:flex-end; gap:3px; font-size:8pt; color:#475569; }
+  #print-cv .p-summary{ font-size:8.5pt; color:#475569; margin-bottom:8px; }
+  #print-cv .p-summary strong{ color:#0f172a; }
+  #print-cv .p-metrics{ display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-bottom:10px; }
+  #print-cv .p-metric{ background:#f8fafc; border:1px solid #e2e8f0; border-radius:5px; padding:6px; text-align:center; }
+  #print-cv .p-metric b{ display:block; font-size:13pt; color:#2563eb; }
+  #print-cv .p-metric span{ font-size:6.3pt; color:#475569; }
+  #print-cv .p-grid{ display:grid; grid-template-columns:1fr 66mm; gap:14px; }
+  #print-cv .p-section-title{ font-size:7pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#2563eb; border-bottom:1px solid #e2e8f0; padding-bottom:4px; margin-bottom:6px; }
+  #print-cv .p-exp{ padding-left:10px; border-left:2px solid #e2e8f0; margin-bottom:8px; }
+  #print-cv .p-exp-head{ display:flex; justify-content:space-between; gap:6px; }
+  #print-cv .p-exp-title{ font-size:9pt; font-weight:700; }
+  #print-cv .p-exp-period{ font-size:7.3pt; font-weight:600; color:#2563eb; background:#eff6ff; padding:1px 5px; border-radius:3px; white-space:nowrap; }
+  #print-cv .p-exp-company{ font-size:7.5pt; color:#475569; margin-bottom:3px; }
+  #print-cv .p-exp ul{ list-style:none; }
+  #print-cv .p-exp li{ font-size:7.8pt; color:#475569; padding-left:9px; position:relative; margin-bottom:2px; }
+  #print-cv .p-exp li::before{ content:'▸'; position:absolute; left:0; color:#2563eb; font-size:6.5pt; }
+  #print-cv .p-ai{ background:linear-gradient(135deg,#0f172a,#1e3a5f); border-radius:5px; padding:8px 10px; color:#fff; margin-top:6px; }
+  #print-cv .p-ai b{ font-size:7.3pt; color:#93c5fd; display:block; margin-bottom:2px; }
+  #print-cv .p-ai span{ font-size:6.8pt; color:#94a3b8; line-height:1.4; }
+  #print-cv .p-skill-group{ margin-bottom:6px; }
+  #print-cv .p-skill-label{ font-size:6.8pt; font-weight:700; color:#475569; text-transform:uppercase; letter-spacing:.05em; margin-bottom:3px; }
+  #print-cv .p-tag{ display:inline-block; font-size:7pt; background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe; padding:1px 5px; border-radius:3px; margin:0 2px 2px 0; }
+  #print-cv .p-tag.strong{ background:#2563eb; color:#fff; border-color:#2563eb; }
+  #print-cv .p-lang-row{ display:flex; align-items:center; gap:6px; margin-bottom:3px; font-size:7.5pt; }
+  #print-cv .p-lang-name{ width:60px; font-weight:600; flex-shrink:0; }
+  #print-cv .p-lang-level{ flex:1; color:#475569; font-size:6.8pt; }
+  #print-cv .p-edu-degree{ font-size:8.3pt; font-weight:700; }
+  #print-cv .p-edu-school{ font-size:7.3pt; color:#475569; }
+  #print-cv .p-edu-period{ font-size:7.3pt; color:#2563eb; font-weight:600; }
+  #print-cv .p-cert{ display:flex; gap:5px; margin-bottom:4px; }
+  #print-cv .p-cert .dot{ width:5px; height:5px; border-radius:50%; background:#2563eb; margin-top:4px; flex-shrink:0; }
+  #print-cv .p-cert-title{ font-size:7.6pt; font-weight:600; }
+  #print-cv .p-cert-issuer{ font-size:7pt; color:#475569; }
+</style>
+<div class="page">
+  <div class="p-header">
+    <div class="p-photo"><img src="assets/foto.jpg" alt="Fernando Sanchez" /></div>
+    <div>
+      <div class="p-name">Fernando Sanchez</div>
+      <div class="p-title" data-i18n="hero_eyebrow">IT Coordinator · .NET Developer · AI-Assisted Engineer</div>
+    </div>
+    <div class="p-contact">
+      <span>+595 983 240 491</span>
+      <span>fernando_sh99@outlook.com</span>
+      <span>github.com/nandosanchez14</span>
+      <span>linkedin.com/in/fernando-sanchez-hartwig</span>
+      <span data-i18n="hero_meta">Katuété, Canindeyú, Paraguay · Remote-ready</span>
+    </div>
+  </div>
+
+  <p class="p-summary" data-i18n="about_summary">Systems Engineer and IT Coordinator with <strong>6+ years</strong> of hands-on experience...</p>
+
+  <div class="p-metrics">
+    <div class="p-metric"><b>6+</b><span data-i18n="metric_years">Years in IT</span></div>
+    <div class="p-metric"><b>4</b><span data-i18n="metric_langs">Languages Spoken</span></div>
+    <div class="p-metric"><b>3</b><span data-i18n="metric_certs">Certifications</span></div>
+    <div class="p-metric"><b>10+</b><span data-i18n="metric_ai">AI Tools &amp; Models Used</span></div>
+  </div>
+
+  <div class="p-grid">
+    <div>
+      <div class="p-section-title" data-i18n="nav_experience">Experience</div>
+
+      <div class="p-exp">
+        <div class="p-exp-head">
+          <div class="p-exp-title" data-i18n="exp1_title">IT Coordinator &amp; .NET Developer</div>
+          <div class="p-exp-period" data-i18n="exp1_period">Apr 2025 — Present</div>
+        </div>
+        <div class="p-exp-company" data-i18n="exp1_company">SisPrime Sistemas · Paraguay (On-site / Remote)</div>
+        <ul>
+          <li data-i18n="exp1_b1">Lead architecture and development of enterprise web systems in <strong>C#, ASP.NET Core and SQL Server</strong>, focused on availability and scalability.</li>
+          <li data-i18n="exp1_b2">Design REST APIs and internal management modules, integrating third-party services and automating business processes.</li>
+          <li data-i18n="exp1_b3">Apply AI-assisted programming daily — <strong>Claude Code, Antigravity</strong>, GitHub Copilot and Gemini — to accelerate delivery and raise code quality without lowering the bar on review.</li>
+          <li data-i18n="exp1_b4">Manage IT infrastructure: Windows/Linux servers, Active Directory, LAN/WAN, corporate email and backup protocols.</li>
+          <li data-i18n="exp1_b5">Lead the technical team under SCRUM/Kanban, run code reviews and mentor junior developers.</li>
+          <li data-i18n="exp1_b6">Build operational reports and KPIs with SQL Server stored procedures and data visualization.</li>
+        </ul>
+      </div>
+
+      <div class="p-exp">
+        <div class="p-exp-head">
+          <div class="p-exp-title" data-i18n="exp2_title">Network Technician</div>
+          <div class="p-exp-period" data-i18n="exp2_period">2021 — 2022</div>
+        </div>
+        <div class="p-exp-company" data-i18n="exp2_company">TempuS Net · Paraguay</div>
+        <ul>
+          <li data-i18n="exp2_b1">Deployed and maintained LAN/WAN and WiFi infrastructure for corporate clients; configured routers, switches and access points.</li>
+          <li data-i18n="exp2_b2">Performed hardware diagnostics and on-site technical support, keeping SLA compliance.</li>
+        </ul>
+      </div>
+
+      <div class="p-ai">
+        <b data-i18n="ai_title">Engineering with AI, not just around it</b>
+        <span data-i18n="print_ai_desc">Daily use of Claude Code, Antigravity, GitHub Copilot, OpenAI Codex, Claude, GPT and Gemini — plus active tracking of DeepSeek, Qwen and Kimi.</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="p-section-title" data-i18n="nav_stack">Tech Stack</div>
+      <div class="p-skill-group">
+        <div class="p-skill-label" data-i18n="stack_backend">Backend</div>
+        <span class="p-tag strong">C#</span><span class="p-tag strong">ASP.NET Core</span><span class="p-tag strong">.NET</span><span class="p-tag">PHP</span><span class="p-tag">Laravel</span>
+      </div>
+      <div class="p-skill-group">
+        <div class="p-skill-label" data-i18n="stack_db">Database</div>
+        <span class="p-tag strong">SQL Server</span><span class="p-tag">MySQL</span><span class="p-tag">EF Core</span><span class="p-tag" data-i18n="stack_storedprocs">Stored Procedures</span>
+      </div>
+      <div class="p-skill-group">
+        <div class="p-skill-label" data-i18n="stack_frontend">Frontend &amp; APIs</div>
+        <span class="p-tag">JavaScript</span><span class="p-tag">HTML5/CSS3</span><span class="p-tag">REST APIs</span><span class="p-tag">Swagger</span>
+      </div>
+      <div class="p-skill-group">
+        <div class="p-skill-label" data-i18n="ai_eyebrow">AI &amp; Dev Tools</div>
+        <span class="p-tag strong">Claude Code</span><span class="p-tag strong">Antigravity</span><span class="p-tag">Copilot</span><span class="p-tag">Codex</span><span class="p-tag">GPT</span><span class="p-tag">Gemini</span><span class="p-tag">DeepSeek</span><span class="p-tag">Qwen</span><span class="p-tag">Kimi</span>
+      </div>
+      <div class="p-skill-group">
+        <div class="p-skill-label" data-i18n="stack_infra">Infrastructure</div>
+        <span class="p-tag">Linux</span><span class="p-tag">Windows Server</span><span class="p-tag">Active Directory</span><span class="p-tag">LAN/WAN</span>
+      </div>
+
+      <div class="p-section-title" style="margin-top:8px;" data-i18n="nav_languages_title">Languages</div>
+      <div class="p-lang-row"><span class="p-lang-name" data-i18n="lang_es">Spanish</span><span class="p-lang-level" data-i18n="level_native">Native</span></div>
+      <div class="p-lang-row"><span class="p-lang-name" data-i18n="lang_pt">Portuguese</span><span class="p-lang-level" data-i18n="level_native">Native</span></div>
+      <div class="p-lang-row"><span class="p-lang-name" data-i18n="lang_gn">Guaraní</span><span class="p-lang-level" data-i18n="level_native">Native</span></div>
+      <div class="p-lang-row"><span class="p-lang-name" data-i18n="lang_en">English</span><span class="p-lang-level" data-i18n="level_en_summary">Reading &amp; Writing: Advanced · Spoken: Conversational</span></div>
+
+      <div class="p-section-title" style="margin-top:8px;" data-i18n="nav_education_title">Education</div>
+      <div class="p-edu-degree" data-i18n="edu_degree">B.Eng. in Computer Systems Engineering</div>
+      <div class="p-edu-school" data-i18n="edu_school">Universidad Nacional del Caaguazú, Paraguay</div>
+      <div class="p-edu-period">2017 — 2023</div>
+
+      <div class="p-section-title" style="margin-top:8px;" data-i18n="nav_certs_title">Certifications</div>
+      <div class="p-cert"><div class="dot"></div><div><div class="p-cert-title" data-i18n="cert1_title">Ethical Hacking — Red Team</div><div class="p-cert-issuer" data-i18n="cert1_issuer">Hacker Mentor · International</div></div></div>
+      <div class="p-cert"><div class="dot"></div><div><div class="p-cert-title" data-i18n="cert2_title">Advanced PC Operator</div><div class="p-cert-issuer">CIE · Katuété</div></div></div>
+      <div class="p-cert"><div class="dot"></div><div><div class="p-cert-title" data-i18n="cert3_title">Computer Technician</div><div class="p-cert-issuer">CIE · Katuété</div></div></div>
+
+      <div class="p-section-title" style="margin-top:8px;" data-i18n="stack_methods">Methodologies</div>
+      <span class="p-tag">SCRUM</span><span class="p-tag">Kanban</span><span class="p-tag" data-i18n="stack_cleanarch">Clean Architecture</span><span class="p-tag" data-i18n="stack_repopattern">Repository Pattern</span><span class="p-tag" data-i18n="stack_itsec">IT Security</span><span class="p-tag" data-i18n="stack_datamodel">Data Modeling</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+(function(){
+  var translations = {
+    en:{
+      nav_about:"About", nav_experience:"Experience", nav_stack:"Stack", nav_ai:"AI", nav_projects:"Projects", nav_contact:"Contact", nav_resume:"Resume",
+      nav_education_title:"Education", nav_certs_title:"Certifications", nav_languages_title:"Languages",
+
+      hero_eyebrow:"IT Coordinator · .NET Developer · AI-Assisted Engineer",
+      hero_lede:"I build reliable enterprise systems in C# and .NET, lead technical teams, and ship faster by pairing with AI — Claude Code, Antigravity, Copilot and beyond — without cutting corners on quality.",
+      hero_meta:"Katuété, Canindeyú, Paraguay · Remote-ready",
+      hero_cta_primary:"Download CV", hero_cta_secondary:"Get in touch", hero_badge:"Open to remote work",
+
+      about_eyebrow:"Profile", about_title:"About me",
+      about_summary:"Systems Engineer and IT Coordinator with <strong>6+ years</strong> of hands-on experience in enterprise software development and technology leadership. Core expertise in <strong>C#, ASP.NET Core, .NET and SQL Server</strong> — designing REST APIs, internal platforms and data-driven systems from architecture to deployment. Currently leading IT operations at SisPrime Sistemas, where I manage cross-functional teams and infrastructure end to end. A committed practitioner of <strong>AI-assisted engineering</strong>: I use coding agents and LLMs daily to move faster, review more code, and keep quality high — not to replace engineering judgment, but to extend it.",
+      metric_years:"Years in IT", metric_langs:"Languages Spoken", metric_certs:"Certifications", metric_ai:"AI Tools &amp; Models Used",
+
+      exp_eyebrow:"Career",
+      exp1_title:"IT Coordinator &amp; .NET Developer", exp1_period:"Apr 2025 — Present", exp1_company:"SisPrime Sistemas · Paraguay (On-site / Remote)",
+      exp1_b1:"Lead architecture and development of enterprise web systems in <strong>C#, ASP.NET Core and SQL Server</strong>, focused on availability and scalability.",
+      exp1_b2:"Design REST APIs and internal management modules, integrating third-party services and automating business processes.",
+      exp1_b3:"Apply AI-assisted programming daily — <strong>Claude Code, Antigravity</strong>, GitHub Copilot and Gemini — to accelerate delivery and raise code quality without lowering the bar on review.",
+      exp1_b4:"Manage IT infrastructure: Windows/Linux servers, Active Directory, LAN/WAN, corporate email and backup protocols.",
+      exp1_b5:"Lead the technical team under SCRUM/Kanban, run code reviews and mentor junior developers.",
+      exp1_b6:"Build operational reports and KPIs with SQL Server stored procedures and data visualization.",
+      exp2_title:"Network Technician", exp2_period:"2021 — 2022", exp2_company:"TempuS Net · Paraguay",
+      exp2_b1:"Deployed and maintained LAN/WAN and WiFi infrastructure for corporate clients; configured routers, switches and access points.",
+      exp2_b2:"Performed hardware diagnostics and on-site technical support, keeping SLA compliance.",
+
+      stack_eyebrow:"Toolbox", stack_backend:"Backend", stack_db:"Database", stack_frontend:"Frontend &amp; APIs", stack_infra:"Infrastructure", stack_methods:"Methodologies",
+      stack_storedprocs:"Stored Procedures", stack_cleanarch:"Clean Architecture", stack_repopattern:"Repository Pattern", stack_itsec:"IT Security", stack_datamodel:"Data Modeling",
+
+      ai_eyebrow:"AI-Assisted Engineering", ai_title:"Engineering with AI, not just around it",
+      ai_intro:"AI is part of how I design, write and review software every day — from planning a feature to shipping it. I keep a close eye on the fast-moving model landscape so I always reach for the right tool for the job.",
+      ai_cat1_title:"Coding Agents &amp; IDEs", ai_cat1_desc:"Agentic pair programming for real feature work — from scaffolding to refactors to debugging production issues.",
+      ai_cat2_title:"LLMs &amp; Chat Models", ai_cat2_desc:"Daily drivers for architecture discussions, documentation, code review and problem-solving.",
+      ai_cat3_title:"Emerging Models I Track", ai_cat3_desc:"Staying current with the broader model ecosystem, including leading Chinese labs, to evaluate cost/performance trade-offs.",
+      ai_practice_agentic:"Agentic Development", ai_practice_spec:"Spec-Driven Development",
+      print_ai_desc:"Daily use of Claude Code, Antigravity, GitHub Copilot, OpenAI Codex, Claude, GPT and Gemini — plus active tracking of DeepSeek, Qwen and Kimi.",
+
+      proj_eyebrow:"Work", proj_title:"Selected Projects", proj_intro:"Proprietary enterprise systems built at SisPrime Sistemas — described here since the code isn't public.",
+      proj1_title:"SisTransp — Fleet &amp; Carrier Management System",
+      proj1_desc:"End-to-end platform for managing carrier and in-house fleet operations: load orders, driver commissions, per-diem allowances, maintenance tracking and monthly settlement runs — replacing manual spreadsheets with a single source of truth.",
+      proj2_title:"Textile Production Control Module",
+      proj2_desc:"Production-tracking module for a textile manufacturing line: from raw yarn intake and batch loading through spinning/weaving stages to finished-goods output, monitoring yield, waste and machine downtime in real time for plant supervisors.",
+      proj3_title:"Enterprise UI Modernization",
+      proj3_desc:"Full front-end refactor of the company's core system: rebuilt legacy screens with a modern, componentized UI, a consistent design language and richer interactivity — improving usability and cutting training time for new operators.",
+      proj_badge:"Internal project · SisPrime Sistemas",
+
+      edu_eyebrow:"Academics", edu_degree:"B.Eng. in Computer Systems Engineering", edu_school:"Universidad Nacional del Caaguazú, Paraguay",
+      certs_eyebrow:"Credentials",
+      cert1_title:"Ethical Hacking — Red Team", cert1_issuer:"Hacker Mentor · International",
+      cert2_title:"Advanced PC Operator", cert3_title:"Computer Technician",
+
+      lang_eyebrow:"Communication", lang_es:"Spanish", lang_pt:"Portuguese", lang_gn:"Guaraní", lang_en:"English",
+      level_native:"Native", level_en_summary:"Reading &amp; Writing: Advanced · Spoken: Conversational",
+
+      contact_title:"Let's talk", contact_text:"Open to remote .NET / backend engineering roles where AI-assisted delivery is valued. Reach out — I reply fast.",
+      footer_credit:"Designed &amp; built by <strong>Fernando Sanchez</strong>, with AI-assisted engineering."
+    },
+    es:{
+      nav_about:"Sobre mí", nav_experience:"Experiencia", nav_stack:"Stack", nav_ai:"IA", nav_projects:"Proyectos", nav_contact:"Contacto", nav_resume:"Currículum",
+      nav_education_title:"Educación", nav_certs_title:"Certificaciones", nav_languages_title:"Idiomas",
+
+      hero_eyebrow:"Coordinador de TI · Desarrollador .NET · Ingeniero AI-Assisted",
+      hero_lede:"Construyo sistemas empresariales confiables en C# y .NET, lidero equipos técnicos, y entrego más rápido trabajando junto a IA — Claude Code, Antigravity, Copilot y más — sin resignar calidad.",
+      hero_meta:"Katuété, Canindeyú, Paraguay · Disponible para remoto",
+      hero_cta_primary:"Descargar CV", hero_cta_secondary:"Contactarme", hero_badge:"Disponible para remoto",
+
+      about_eyebrow:"Perfil", about_title:"Sobre mí",
+      about_summary:"Ingeniero en Sistemas y Coordinador de TI con <strong>más de 6 años</strong> de experiencia práctica en desarrollo de software empresarial y liderazgo tecnológico. Especializado en <strong>C#, ASP.NET Core, .NET y SQL Server</strong> — diseñando APIs REST, plataformas internas y sistemas basados en datos, de punta a punta. Actualmente lidero las operaciones de TI en SisPrime Sistemas, gestionando equipos multidisciplinarios e infraestructura. Practico la <strong>ingeniería asistida por IA</strong> de forma consciente: uso agentes de código y LLMs a diario para avanzar más rápido, revisar más código y mantener la calidad — no para reemplazar el criterio técnico, sino para potenciarlo.",
+      metric_years:"Años en TI", metric_langs:"Idiomas", metric_certs:"Certificaciones", metric_ai:"Herramientas y Modelos de IA",
+
+      exp_eyebrow:"Trayectoria",
+      exp1_title:"Coordinador de TI &amp; Desarrollador .NET", exp1_period:"Abr 2025 — Actualidad", exp1_company:"SisPrime Sistemas · Paraguay (Presencial / Remoto)",
+      exp1_b1:"Lidero la arquitectura y el desarrollo de sistemas web empresariales en <strong>C#, ASP.NET Core y SQL Server</strong>, priorizando disponibilidad y escalabilidad.",
+      exp1_b2:"Diseño APIs REST y módulos internos de gestión, integrando servicios de terceros y automatizando procesos de negocio.",
+      exp1_b3:"Aplico programación asistida por IA a diario — <strong>Claude Code, Antigravity</strong>, GitHub Copilot y Gemini — para acelerar la entrega y elevar la calidad del código sin bajar el estándar de revisión.",
+      exp1_b4:"Administro la infraestructura de TI: servidores Windows/Linux, Active Directory, LAN/WAN, correo corporativo y protocolos de backup.",
+      exp1_b5:"Lidero el equipo técnico bajo SCRUM/Kanban, realizo code reviews y mentorizo desarrolladores junior.",
+      exp1_b6:"Genero reportes operativos y KPIs con stored procedures de SQL Server y visualización de datos.",
+      exp2_title:"Técnico en Redes", exp2_period:"2021 — 2022", exp2_company:"TempuS Net · Paraguay",
+      exp2_b1:"Implementé y mantuve infraestructura LAN/WAN y WiFi para clientes corporativos; configuré routers, switches y access points.",
+      exp2_b2:"Realicé diagnóstico de hardware y soporte técnico en sitio, cumpliendo los SLA acordados.",
+
+      stack_eyebrow:"Herramientas", stack_backend:"Backend", stack_db:"Bases de Datos", stack_frontend:"Frontend &amp; APIs", stack_infra:"Infraestructura", stack_methods:"Metodologías",
+      stack_storedprocs:"Stored Procedures", stack_cleanarch:"Clean Architecture", stack_repopattern:"Repository Pattern", stack_itsec:"Seguridad TI", stack_datamodel:"Modelado de Datos",
+
+      ai_eyebrow:"Ingeniería Asistida por IA", ai_title:"Ingeniería con IA, no solo alrededor de ella",
+      ai_intro:"La IA es parte de cómo diseño, escribo y reviso software todos los días — desde planificar una funcionalidad hasta llevarla a producción. Sigo de cerca el panorama de modelos, que cambia rápido, para elegir siempre la herramienta correcta para cada tarea.",
+      ai_cat1_title:"Agentes de Código &amp; IDEs", ai_cat1_desc:"Programación en pareja agéntica para trabajo real — desde el scaffolding hasta refactors y debugging en producción.",
+      ai_cat2_title:"LLMs &amp; Modelos de Chat", ai_cat2_desc:"Uso diario para discusiones de arquitectura, documentación, revisión de código y resolución de problemas.",
+      ai_cat3_title:"Modelos Emergentes que Sigo", ai_cat3_desc:"Me mantengo al día con el ecosistema más amplio de modelos, incluyendo laboratorios chinos líderes, para evaluar la relación costo/rendimiento.",
+      ai_practice_agentic:"Desarrollo Agéntico", ai_practice_spec:"Desarrollo Spec-Driven",
+      print_ai_desc:"Uso diario de Claude Code, Antigravity, GitHub Copilot, OpenAI Codex, Claude, GPT y Gemini — además de seguimiento activo de DeepSeek, Qwen y Kimi.",
+
+      proj_eyebrow:"Trabajo", proj_title:"Proyectos Destacados", proj_intro:"Sistemas empresariales propietarios desarrollados en SisPrime Sistemas — descritos aquí ya que el código no es público.",
+      proj1_title:"SisTransp — Sistema de Gestión de Transportadoras y Flota",
+      proj1_desc:"Plataforma integral para la gestión de transportadoras y flota propia: órdenes de carga, comisiones de choferes, viáticos, control de mantenimientos y liquidaciones mensuales — reemplazando planillas manuales por una única fuente de verdad.",
+      proj2_title:"Módulo de Control de Producción Industrial (Textil)",
+      proj2_desc:"Módulo de seguimiento de producción para una línea textil: desde la carga de hilos y lotes de materia prima, pasando por las etapas de hilado/tejido, hasta la salida de producto terminado — con seguimiento en tiempo real de rendimiento, desperdicio y paradas de máquina para los supervisores de planta.",
+      proj3_title:"Modernización de UI Empresarial",
+      proj3_desc:"Refactorización integral del frontend del sistema principal de la empresa: pantallas heredadas reconstruidas con una UI moderna y componentizada, lenguaje visual consistente e interactividad más rica — mejorando la usabilidad y reduciendo el tiempo de capacitación de nuevos operadores.",
+      proj_badge:"Proyecto interno · SisPrime Sistemas",
+
+      edu_eyebrow:"Formación", edu_degree:"Ingeniería en Sistemas Informáticos", edu_school:"Universidad Nacional del Caaguazú, Paraguay",
+      certs_eyebrow:"Credenciales",
+      cert1_title:"Ethical Hacking — Red Team", cert1_issuer:"Hacker Mentor · Internacional",
+      cert2_title:"Operador Avanzado", cert3_title:"Técnico en Computadora",
+
+      lang_eyebrow:"Comunicación", lang_es:"Español", lang_pt:"Portugués", lang_gn:"Guaraní", lang_en:"Inglés",
+      level_native:"Nativo", level_en_summary:"Lectura y escritura: Avanzado · Oral: Conversacional",
+
+      contact_title:"Hablemos", contact_text:"Disponible para roles remotos de desarrollo .NET / backend donde se valore la entrega asistida por IA. Escribime — respondo rápido.",
+      footer_credit:"Diseñado y construido por <strong>Fernando Sanchez</strong>, con ingeniería asistida por IA."
+    }
+  };
+
+  function applyLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var val = translations[lang][el.getAttribute('data-i18n')];
+      if(val != null) el.innerHTML = val;
+    });
+    document.querySelectorAll('.lang-toggle button').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+    try{ localStorage.setItem('fs-cv-lang', lang); }catch(e){}
+  }
+
+  document.querySelectorAll('.lang-toggle button').forEach(function(b){
+    b.addEventListener('click', function(){ applyLang(b.getAttribute('data-lang')); });
+  });
+
+  var saved = 'en';
+  try{ saved = localStorage.getItem('fs-cv-lang') || 'en'; }catch(e){}
+  applyLang(saved);
+
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('is-visible'); });
+  }
+})();
+</script>
+</body>
+</html>
