@@ -3,22 +3,22 @@
   How to edit:
     - All copy lives in the `translations` object near the bottom of <script>. Each key has an
       `en` and `es` value; the on-screen text updates automatically when you change either.
-    - The "Selected Projects" section (search for id="projects") has 3 placeholder cards.
-      Replace each one with a real repo: title, one-line impact statement, tech tags and a link.
     - The printable, one-page CV lives in the block with id="print-cv" near the end of <body>.
       It reuses the same translation keys as the main page, so editing content above keeps it in sync.
+    - Language can be forced with ?lang=en or ?lang=es (used to export each PDF).
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Fernando Sanchez — Software Engineer &amp; AI-Assisted Developer</title>
-<meta name="description" content="Fernando Sanchez — IT Coordinator, .NET Developer and AI-Assisted Engineer. C#, ASP.NET Core, SQL Server, and daily AI-assisted engineering with Claude Code, Antigravity and more." />
+<title>Fernando Sanchez — Tech Lead · .NET</title>
+<meta name="description" content="Fernando Sanchez — Tech Lead and Systems Engineer. Leads a cross-functional team of six building enterprise systems in C#, ASP.NET Core and SQL Server." />
 <meta name="theme-color" content="#05070d" />
-<meta property="og:title" content="Fernando Sanchez — Software Engineer & AI-Assisted Developer" />
-<meta property="og:description" content="IT Coordinator, .NET Developer and AI-Assisted Engineer building enterprise systems in C# / ASP.NET Core / SQL Server." />
+<meta property="og:title" content="Fernando Sanchez — Tech Lead · .NET" />
+<meta property="og:description" content="Tech Lead and Systems Engineer building enterprise systems in C#, ASP.NET Core and SQL Server, with AI-assisted engineering as a team practice." />
 <meta property="og:type" content="website" />
+<meta property="og:url" content="https://nandosanchez14.github.io/cv-portfolio/" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2334e5ff'/%3E%3Cstop offset='1' stop-color='%23a78bfa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%2305070d'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-weight='800' font-size='28' fill='url(%23g)' text-anchor='middle'%3EFS%3C/text%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -169,22 +169,17 @@
   .ai-cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:8px;}
   .ai-cat h4{font-size:1rem;font-weight:700;margin-bottom:6px;}
   .ai-cat p{color:var(--text-dim);font-size:.86rem;margin-bottom:12px;}
-  .ai-practices{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px;padding-top:26px;border-top:1px solid var(--border);}
 
   /* ── projects ── */
-  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;}
-  .project-empty{border:1.5px dashed var(--border-strong);border-radius:var(--radius);padding:32px 22px;text-align:center;color:var(--text-dim);transition:.25s;}
-  .project-empty:hover{border-color:var(--cyan);color:var(--text-muted);}
-  .project-empty .plus{width:38px;height:38px;margin:0 auto 14px;border-radius:50%;border:1.5px solid var(--border-strong);display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--text-dim);}
-  .project-empty h4{font-size:.98rem;color:var(--text-muted);margin-bottom:8px;font-weight:700;}
-  .project-empty p{font-size:.82rem;line-height:1.5;}
-  .project-empty .tag{opacity:.45;font-size:.72rem;}
-  .project-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px 24px;transition:transform .25s,border-color .25s,box-shadow .25s;}
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;}
+  .project-card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px 24px;transition:transform .25s,border-color .25s,box-shadow .25s;}
   .project-card:hover{transform:translateY(-4px);border-color:var(--border-strong);box-shadow:var(--glow);}
   .project-card h4{font-size:1.05rem;font-weight:700;margin-bottom:10px;}
-  .project-card p{color:var(--text-muted);font-size:.9rem;line-height:1.55;margin-bottom:16px;}
-  .project-badge{display:flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-dim);margin-top:14px;}
-  .project-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan);flex-shrink:0;}
+  .project-card p{color:var(--text-muted);font-size:.9rem;line-height:1.55;margin-bottom:16px;flex:1;}
+  .project-link{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--cyan);text-decoration:none;margin-top:12px;}
+  .project-link:hover{text-decoration:underline;}
+  .project-badge{display:flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-dim);margin-top:12px;}
+  .project-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--violet);box-shadow:0 0 8px var(--violet);flex-shrink:0;}
 
   /* ── education / certs ── */
   .ec-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
@@ -192,6 +187,8 @@
   .edu-degree{font-size:1.05rem;font-weight:700;}
   .edu-school{color:var(--text-muted);font-size:.9rem;margin-top:2px;}
   .edu-period{color:var(--cyan);font-family:'JetBrains Mono',monospace;font-size:.78rem;margin-top:6px;}
+  .edu-thesis{color:var(--text-muted);font-size:.88rem;margin-top:12px;}
+  .edu-thesis strong{color:var(--text);font-weight:600;}
   .cert-item{display:flex;gap:12px;margin-bottom:16px;}
   .cert-item:last-child{margin-bottom:0;}
   .cert-dot{width:7px;height:7px;border-radius:50%;background:var(--gradient);margin-top:7px;flex-shrink:0;}
@@ -229,7 +226,7 @@
     body > main,
     body > footer#contact{ display:none !important; }
     #print-cv{ display:block !important; }
-    html,body{ background:#fff; color:#0f172a; }
+    html,body{ background:#fff; color:#0f172a; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
     @page{ margin:0; size:A4; }
   }
 </style>
@@ -243,9 +240,9 @@
     <nav class="links">
       <a href="#about" data-i18n="nav_about">About</a>
       <a href="#experience" data-i18n="nav_experience">Experience</a>
+      <a href="#projects" data-i18n="nav_projects">Projects</a>
       <a href="#stack" data-i18n="nav_stack">Stack</a>
       <a href="#ai" data-i18n="nav_ai">AI</a>
-      <a href="#projects" data-i18n="nav_projects">Projects</a>
       <a href="#contact" data-i18n="nav_contact">Contact</a>
     </nav>
     <div class="nav-right">
@@ -264,12 +261,12 @@
   <div class="aura aura-2"></div>
   <div class="wrap hero-inner">
     <div>
-      <div class="eyebrow" data-i18n="hero_eyebrow">IT Coordinator · .NET Developer · AI-Assisted Engineer</div>
+      <div class="eyebrow" data-i18n="hero_eyebrow">Tech Lead · .NET / C# · ASP.NET Core · SQL Server</div>
       <h1>Fernando Sanchez</h1>
-      <p class="lede" data-i18n="hero_lede">I build reliable enterprise systems in C# and .NET, lead technical teams, and ship faster by pairing with AI — Claude Code, Antigravity, Copilot and beyond — without cutting corners on quality.</p>
+      <p class="lede" data-i18n="hero_lede">I lead a cross-functional team of six building enterprise systems in C# and .NET.</p>
       <div class="meta">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span data-i18n="hero_meta">Katuété, Canindeyú, Paraguay · Remote-ready</span>
+        <span data-i18n="hero_meta">Canindeyú, Paraguay · UTC−3 · Remote</span>
       </div>
       <div class="cta-row">
         <button type="button" class="btn btn-primary" onclick="window.print()" data-i18n="hero_cta_primary">Download CV</button>
@@ -278,7 +275,7 @@
     </div>
     <div class="hero-photo">
       <div class="ring"><img src="assets/foto.jpg" alt="Fernando Sanchez" /></div>
-      <div class="badge"><span class="dot"></span><span data-i18n="hero_badge">Open to remote work</span></div>
+      <div class="badge"><span class="dot"></span><span data-i18n="hero_badge">Leading a team of 6</span></div>
     </div>
   </div>
   <div class="scroll-cue mono"><span></span>SCROLL</div>
@@ -292,13 +289,13 @@
       <div class="reveal">
         <div class="section-eyebrow" data-i18n="about_eyebrow">Profile</div>
         <h2 class="section-title" data-i18n="about_title">About me</h2>
-        <p data-i18n="about_summary">Systems Engineer and IT Coordinator with <strong>6+ years</strong> of hands-on experience in enterprise software development and technology leadership. Core expertise in <strong>C#, ASP.NET Core, .NET and SQL Server</strong> — designing REST APIs, internal platforms and data-driven systems from architecture to deployment. Currently leading IT operations at SisPrime Sistemas, where I manage cross-functional teams and infrastructure end to end. A committed practitioner of <strong>AI-assisted engineering</strong>: I use coding agents and LLMs daily to move faster, review more code, and keep quality high — not to replace engineering judgment, but to extend it.</p>
+        <p data-i18n="about_summary">Systems Engineer and Tech Lead.</p>
       </div>
       <div class="metrics reveal">
-        <div class="metric"><div class="metric-num">6+</div><div class="metric-lbl" data-i18n="metric_years">Years in IT</div></div>
-        <div class="metric"><div class="metric-num">4</div><div class="metric-lbl" data-i18n="metric_langs">Languages Spoken</div></div>
-        <div class="metric"><div class="metric-num">3</div><div class="metric-lbl" data-i18n="metric_certs">Certifications</div></div>
-        <div class="metric"><div class="metric-num">10+</div><div class="metric-lbl" data-i18n="metric_ai">AI Tools &amp; Models Used</div></div>
+        <div class="metric"><div class="metric-num">6</div><div class="metric-lbl" data-i18n="metric_team">Team members led</div></div>
+        <div class="metric"><div class="metric-num">7</div><div class="metric-lbl" data-i18n="metric_modules">System modules delivered</div></div>
+        <div class="metric"><div class="metric-num">3</div><div class="metric-lbl" data-i18n="metric_repos">Public .NET APIs</div></div>
+        <div class="metric"><div class="metric-num">4</div><div class="metric-lbl" data-i18n="metric_langs">Languages (3 native)</div></div>
       </div>
     </div>
   </section>
@@ -314,100 +311,43 @@
         <div class="tl-item reveal">
           <div class="tl-card">
             <div class="tl-head">
-              <div class="tl-title" data-i18n="exp1_title">IT Coordinator &amp; .NET Developer</div>
+              <div class="tl-title" data-i18n="exp1_title">IT Coordinator · Tech Lead</div>
               <div class="tl-period" data-i18n="exp1_period">Apr 2025 — Present</div>
             </div>
-            <div class="tl-company" data-i18n="exp1_company">SisPrime Sistemas · Paraguay (On-site / Remote)</div>
+            <div class="tl-company" data-i18n="exp1_company">SisPrime Sistemas · Paraguay</div>
             <ul>
-              <li data-i18n="exp1_b1">Lead architecture and development of enterprise web systems in <strong>C#, ASP.NET Core and SQL Server</strong>, focused on availability and scalability.</li>
-              <li data-i18n="exp1_b2">Design REST APIs and internal management modules, integrating third-party services and automating business processes.</li>
-              <li data-i18n="exp1_b3">Apply AI-assisted programming daily — <strong>Claude Code, Antigravity</strong>, GitHub Copilot and Gemini — to accelerate delivery and raise code quality without lowering the bar on review.</li>
-              <li data-i18n="exp1_b4">Manage IT infrastructure: Windows/Linux servers, Active Directory, LAN/WAN, corporate email and backup protocols.</li>
-              <li data-i18n="exp1_b5">Lead the technical team under SCRUM/Kanban, run code reviews and mentor junior developers.</li>
-              <li data-i18n="exp1_b6">Build operational reports and KPIs with SQL Server stored procedures and data visualization.</li>
+              <li data-i18n="exp1_b1"></li>
+              <li data-i18n="exp1_b2"></li>
+              <li data-i18n="exp1_b3"></li>
+              <li data-i18n="exp1_b4"></li>
+              <li data-i18n="exp1_b5"></li>
             </ul>
           </div>
         </div>
         <div class="tl-item reveal">
           <div class="tl-card">
             <div class="tl-head">
-              <div class="tl-title" data-i18n="exp2_title">Network Technician</div>
-              <div class="tl-period" data-i18n="exp2_period">2021 — 2022</div>
+              <div class="tl-title" data-i18n="exp2_title">Administrative Officer</div>
+              <div class="tl-period" data-i18n="exp2_period">Jan 2024 — Apr 2025</div>
             </div>
-            <div class="tl-company" data-i18n="exp2_company">TempuS Net · Paraguay</div>
+            <div class="tl-company" data-i18n="exp2_company">F.E.L. Agro Import Export S.A. · Paraguay</div>
             <ul>
-              <li data-i18n="exp2_b1">Deployed and maintained LAN/WAN and WiFi infrastructure for corporate clients; configured routers, switches and access points.</li>
-              <li data-i18n="exp2_b2">Performed hardware diagnostics and on-site technical support, keeping SLA compliance.</li>
+              <li data-i18n="exp2_b1"></li>
+              <li data-i18n="exp2_b2"></li>
             </ul>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ STACK ══ -->
-  <section id="stack">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="section-eyebrow" data-i18n="stack_eyebrow">Toolbox</div>
-        <h2 class="section-title" data-i18n="nav_stack">Tech Stack</h2>
-      </div>
-      <div class="stack-grid reveal">
-        <div class="stack-card">
-          <h3 data-i18n="stack_backend">Backend</h3>
-          <span class="tag strong">C#</span><span class="tag strong">ASP.NET Core</span><span class="tag strong">.NET</span><span class="tag">PHP</span><span class="tag">Laravel</span>
-        </div>
-        <div class="stack-card">
-          <h3 data-i18n="stack_db">Database</h3>
-          <span class="tag strong">SQL Server</span><span class="tag">MySQL</span><span class="tag">EF Core</span><span class="tag" data-i18n="stack_storedprocs">Stored Procedures</span>
-        </div>
-        <div class="stack-card">
-          <h3 data-i18n="stack_frontend">Frontend &amp; APIs</h3>
-          <span class="tag">JavaScript</span><span class="tag">HTML5 / CSS3</span><span class="tag">REST APIs</span><span class="tag">Swagger</span>
-        </div>
-        <div class="stack-card">
-          <h3 data-i18n="stack_infra">Infrastructure</h3>
-          <span class="tag">Linux</span><span class="tag">Windows Server</span><span class="tag">Active Directory</span><span class="tag">LAN/WAN</span>
-        </div>
-        <div class="stack-card">
-          <h3 data-i18n="stack_methods">Methodologies</h3>
-          <span class="tag">SCRUM</span><span class="tag">Kanban</span><span class="tag" data-i18n="stack_cleanarch">Clean Architecture</span><span class="tag" data-i18n="stack_repopattern">Repository Pattern</span><span class="tag" data-i18n="stack_itsec">IT Security</span><span class="tag" data-i18n="stack_datamodel">Data Modeling</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ AI-ASSISTED ENGINEERING ══ -->
-  <section id="ai">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="section-eyebrow" data-i18n="ai_eyebrow">Ai-Assisted Engineering</div>
-        <h2 class="section-title" data-i18n="ai_title">Engineering with AI, not just around it</h2>
-        <p class="section-intro" data-i18n="ai_intro">AI is part of how I design, write and review software every day — from planning a feature to shipping it. I keep a close eye on the fast-moving model landscape so I always reach for the right tool for the job.</p>
-      </div>
-      <div class="ai-panel reveal">
-        <div class="ai-cats">
-          <div class="ai-cat">
-            <h4 data-i18n="ai_cat1_title">Coding Agents &amp; IDEs</h4>
-            <p data-i18n="ai_cat1_desc">Agentic pair programming for real feature work — from scaffolding to refactors to debugging production issues.</p>
-            <span class="tag strong">Claude Code</span><span class="tag strong">Antigravity</span><span class="tag">GitHub Copilot</span><span class="tag">OpenAI Codex</span>
+        <div class="tl-item reveal">
+          <div class="tl-card">
+            <div class="tl-head">
+              <div class="tl-title" data-i18n="exp3_title">Network Technician</div>
+              <div class="tl-period" data-i18n="exp3_period">Oct 2021 — Mar 2022</div>
+            </div>
+            <div class="tl-company" data-i18n="exp3_company">Tempus S.A. · Paraguay</div>
+            <ul>
+              <li data-i18n="exp3_b1"></li>
+            </ul>
           </div>
-          <div class="ai-cat">
-            <h4 data-i18n="ai_cat2_title">LLMs &amp; Chat Models</h4>
-            <p data-i18n="ai_cat2_desc">Daily drivers for architecture discussions, documentation, code review and problem-solving.</p>
-            <span class="tag">Claude</span><span class="tag">GPT</span><span class="tag">Gemini</span>
-          </div>
-          <div class="ai-cat">
-            <h4 data-i18n="ai_cat3_title">Emerging Models I Track</h4>
-            <p data-i18n="ai_cat3_desc">Staying current with the broader model ecosystem, including leading Chinese labs, to evaluate cost/performance trade-offs.</p>
-            <span class="tag">DeepSeek</span><span class="tag">Qwen</span><span class="tag">Kimi</span>
-          </div>
-        </div>
-        <div class="ai-practices">
-          <span class="tag strong">Prompt Engineering</span>
-          <span class="tag strong">AI Pair Programming</span>
-          <span class="tag" data-i18n="ai_practice_agentic">Agentic Development</span>
-          <span class="tag" data-i18n="ai_practice_spec">Spec-Driven Development</span>
         </div>
       </div>
     </div>
@@ -419,26 +359,89 @@
       <div class="section-head reveal">
         <div class="section-eyebrow" data-i18n="proj_eyebrow">Work</div>
         <h2 class="section-title" data-i18n="proj_title">Selected Projects</h2>
-        <p class="section-intro" data-i18n="proj_intro">Proprietary enterprise systems built at SisPrime Sistemas — described here since the code isn't public.</p>
+        <p class="section-intro" data-i18n="proj_intro">Public repositories and academic work. Production systems I lead at work are proprietary and summarized under Experience.</p>
       </div>
       <div class="projects-grid reveal">
         <div class="project-card">
-          <h4 data-i18n="proj1_title">SisTransp — Fleet &amp; Carrier Management System</h4>
-          <p data-i18n="proj1_desc">End-to-end platform for managing carrier and in-house fleet operations: load orders, driver commissions, per-diem allowances, maintenance tracking and monthly settlement runs — replacing manual spreadsheets with a single source of truth.</p>
-          <div><span class="tag">C#</span><span class="tag">ASP.NET Core</span><span class="tag">SQL Server</span><span class="tag">REST API</span></div>
-          <div class="project-badge" data-i18n="proj_badge">Internal project · SisPrime Sistemas</div>
+          <h4>employee-management-api</h4>
+          <p data-i18n="proj1_desc"></p>
+          <div><span class="tag">.NET 9</span><span class="tag">SQL Server</span><span class="tag">JWT</span><span class="tag">xUnit</span><span class="tag">CI</span></div>
+          <a class="project-link" href="https://github.com/nandosanchez14/employee-management-api" target="_blank" rel="noopener" data-i18n="proj_link">View on GitHub →</a>
         </div>
         <div class="project-card">
-          <h4 data-i18n="proj2_title">Textile Production Control Module</h4>
-          <p data-i18n="proj2_desc">Production-tracking module for a textile manufacturing line: from raw yarn intake and batch loading through spinning/weaving stages to finished-goods output, monitoring yield, waste and machine downtime in real time for plant supervisors.</p>
-          <div><span class="tag">C#</span><span class="tag">ASP.NET Core</span><span class="tag">SQL Server</span><span class="tag">Reporting</span></div>
-          <div class="project-badge" data-i18n="proj_badge">Internal project · SisPrime Sistemas</div>
+          <h4>ai-smart-notes-api</h4>
+          <p data-i18n="proj2_desc"></p>
+          <div><span class="tag">.NET 9</span><span class="tag">OpenAI</span><span class="tag">EF Core</span><span class="tag">xUnit</span><span class="tag">CI</span></div>
+          <a class="project-link" href="https://github.com/nandosanchez14/ai-smart-notes-api" target="_blank" rel="noopener" data-i18n="proj_link">View on GitHub →</a>
         </div>
         <div class="project-card">
-          <h4 data-i18n="proj3_title">Enterprise UI Modernization</h4>
-          <p data-i18n="proj3_desc">Full front-end refactor of the company's core system: rebuilt legacy screens with a modern, componentized UI, a consistent design language and richer interactivity — improving usability and cutting training time for new operators.</p>
-          <div><span class="tag">JavaScript</span><span class="tag">HTML5/CSS3</span><span class="tag">UI/UX</span></div>
-          <div class="project-badge" data-i18n="proj_badge">Internal project · SisPrime Sistemas</div>
+          <h4>task-management-api</h4>
+          <p data-i18n="proj3_desc"></p>
+          <div><span class="tag">.NET 9</span><span class="tag">EF Core</span><span class="tag" data-i18n="tag_repopattern">Repository Pattern</span><span class="tag">CI</span></div>
+          <a class="project-link" href="https://github.com/nandosanchez14/task-management-api" target="_blank" rel="noopener" data-i18n="proj_link">View on GitHub →</a>
+        </div>
+        <div class="project-card">
+          <h4 data-i18n="proj4_title">Higher Education Map of Paraguay</h4>
+          <p data-i18n="proj4_desc"></p>
+          <div><span class="tag">PHP</span><span class="tag">Laravel</span><span class="tag">Leaflet.js</span></div>
+          <div class="project-badge" data-i18n="proj4_badge">Undergraduate thesis · 2023</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ STACK ══ -->
+  <section id="stack">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-eyebrow" data-i18n="stack_eyebrow">Toolbox</div>
+        <h2 class="section-title" data-i18n="stack_title">Tech Stack</h2>
+      </div>
+      <div class="stack-grid reveal">
+        <div class="stack-card">
+          <h3 data-i18n="stack_backend">Backend</h3>
+          <span class="tag strong">C#</span><span class="tag strong">.NET 8/9</span><span class="tag strong">ASP.NET Core</span><span class="tag">EF Core</span><span class="tag">REST APIs</span><span class="tag">JWT</span><span class="tag">xUnit</span><span class="tag">PHP / Laravel</span>
+        </div>
+        <div class="stack-card">
+          <h3 data-i18n="stack_db">Data</h3>
+          <span class="tag strong">SQL Server</span><span class="tag">T-SQL</span><span class="tag" data-i18n="stack_storedprocs">Stored Procedures</span><span class="tag">MySQL</span><span class="tag" data-i18n="stack_datamodel">Data Modeling</span>
+        </div>
+        <div class="stack-card">
+          <h3 data-i18n="stack_frontend">Frontend</h3>
+          <span class="tag">JavaScript</span><span class="tag">HTML5 / CSS3</span><span class="tag">Leaflet.js</span><span class="tag">Swagger / OpenAPI</span>
+        </div>
+        <div class="stack-card">
+          <h3 data-i18n="stack_infra">Infrastructure &amp; DevOps</h3>
+          <span class="tag">Git</span><span class="tag">GitHub Actions</span><span class="tag">Windows Server</span><span class="tag">Linux</span><span class="tag">Active Directory</span><span class="tag">LAN/WAN</span>
+        </div>
+        <div class="stack-card">
+          <h3 data-i18n="stack_methods">Leadership &amp; Practices</h3>
+          <span class="tag">Scrum</span><span class="tag">Kanban</span><span class="tag" data-i18n="stack_codereview">Code Review</span><span class="tag" data-i18n="stack_mentoring">Mentoring</span><span class="tag" data-i18n="stack_cleanarch">Clean Architecture</span><span class="tag" data-i18n="stack_itsec">IT Security</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ AI-ASSISTED ENGINEERING ══ -->
+  <section id="ai">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-eyebrow" data-i18n="ai_eyebrow">AI-Assisted Engineering</div>
+        <h2 class="section-title" data-i18n="ai_title">AI as a team practice</h2>
+        <p class="section-intro" data-i18n="ai_intro"></p>
+      </div>
+      <div class="ai-panel reveal">
+        <div class="ai-cats">
+          <div class="ai-cat">
+            <h4 data-i18n="ai_cat1_title">Tools</h4>
+            <p data-i18n="ai_cat1_desc">Coding agents and models I use day to day.</p>
+            <span class="tag strong">Claude Code</span><span class="tag strong">GitHub Copilot</span><span class="tag">Antigravity</span><span class="tag">OpenAI Codex</span><span class="tag">Claude</span><span class="tag">GPT</span><span class="tag">Gemini</span>
+          </div>
+          <div class="ai-cat">
+            <h4 data-i18n="ai_cat2_title">How I use them</h4>
+            <p data-i18n="ai_cat2_desc">Spec first, agent second, human review always.</p>
+            <span class="tag" data-i18n="ai_practice_spec">Spec-Driven Development</span><span class="tag" data-i18n="ai_practice_agentic">Agentic Workflows</span><span class="tag" data-i18n="ai_practice_review">AI-Assisted Code Review</span><span class="tag" data-i18n="ai_practice_api">LLM API Integration</span>
+          </div>
         </div>
       </div>
     </div>
@@ -452,7 +455,8 @@
         <h2 class="section-title" data-i18n="nav_education_title">Education</h2>
         <div class="edu-degree" data-i18n="edu_degree">B.Eng. in Computer Systems Engineering</div>
         <div class="edu-school" data-i18n="edu_school">Universidad Nacional del Caaguazú, Paraguay</div>
-        <div class="edu-period">2017 — 2023</div>
+        <div class="edu-period" data-i18n="edu_period">2017 — 2023 · Graduated Dec 2023</div>
+        <div class="edu-thesis" data-i18n="edu_thesis"></div>
       </div>
       <div class="reveal">
         <div class="section-eyebrow" data-i18n="certs_eyebrow">Credentials</div>
@@ -460,14 +464,6 @@
         <div class="cert-item">
           <div class="cert-dot"></div>
           <div><div class="cert-title" data-i18n="cert1_title">Ethical Hacking — Red Team</div><div class="cert-issuer" data-i18n="cert1_issuer">Hacker Mentor · International</div></div>
-        </div>
-        <div class="cert-item">
-          <div class="cert-dot"></div>
-          <div><div class="cert-title" data-i18n="cert2_title">Advanced PC Operator</div><div class="cert-issuer">CIE · Katuété</div></div>
-        </div>
-        <div class="cert-item">
-          <div class="cert-dot"></div>
-          <div><div class="cert-title" data-i18n="cert3_title">Computer Technician</div><div class="cert-issuer">CIE · Katuété</div></div>
         </div>
       </div>
     </div>
@@ -510,12 +506,8 @@
 <footer id="contact">
   <div class="wrap contact-inner reveal">
     <h2 data-i18n="contact_title">Let's talk</h2>
-    <p data-i18n="contact_text">Open to remote .NET / backend engineering roles where AI-assisted delivery is valued. Reach out — I reply fast.</p>
+    <p data-i18n="contact_text">Email or LinkedIn is the fastest way to reach me.</p>
     <div class="contact-chips">
-      <a class="chip" href="tel:+595983240491">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.9a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        +595 983 240 491
-      </a>
       <a class="chip" href="mailto:fernando_sh99@outlook.com">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         fernando_sh99@outlook.com
@@ -537,52 +529,53 @@
 
 <!-- ══════════════════════════════════════════════════════════════════════
      PRINT-ONLY CV — hidden on screen, shown only when printing / exporting
-     to PDF (button "Download CV" / Ctrl+P). Kept as its own block so it can
-     use a clean, proven single-page A4 layout independent of the portfolio
-     styling above. Uses the same data-i18n keys, so language + content stay
-     in sync automatically.
+     to PDF (button "Download CV" / Ctrl+P). Single A4 page, same data-i18n
+     keys as the portfolio so language + content stay in sync.
      ══════════════════════════════════════════════════════════════════════ -->
 <div id="print-cv">
 <style>
-  #print-cv{ font-family:'Inter',sans-serif; font-size:9pt; line-height:1.42; color:#0f172a; }
-  #print-cv .page{ width:210mm; min-height:297mm; padding:11mm 12mm 10mm 12mm; }
+  #print-cv{ font-family:'Inter',sans-serif; font-size:9pt; line-height:1.4; color:#0f172a; }
+  #print-cv .page{ width:210mm; height:297mm; overflow:hidden; padding:11mm 12mm 9mm 12mm; }
+  #print-cv a{ color:inherit; text-decoration:none; }
   #print-cv .p-header{ display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:12px; padding-bottom:7px; border-bottom:2.5px solid #2563eb; margin-bottom:8px; }
-  #print-cv .p-photo{ width:22mm; height:22mm; border-radius:50%; overflow:hidden; border:2px solid #2563eb; flex-shrink:0; }
+  #print-cv .p-photo{ width:22mm; height:22mm; border-radius:50%; overflow:hidden; border:2px solid #2563eb; }
   #print-cv .p-photo img{ width:100%; height:100%; object-fit:cover; object-position:center 22%; }
-  #print-cv .p-name{ font-size:22pt; font-weight:800; letter-spacing:-.5px; }
-  #print-cv .p-title{ font-size:8.5pt; font-weight:600; color:#2563eb; text-transform:uppercase; letter-spacing:.06em; margin-top:3px; }
-  #print-cv .p-contact{ display:flex; flex-direction:column; align-items:flex-end; gap:3px; font-size:8pt; color:#475569; }
-  #print-cv .p-summary{ font-size:8.5pt; color:#475569; margin-bottom:8px; }
+  #print-cv .p-name{ font-size:22pt; font-weight:800; letter-spacing:-.5px; line-height:1.05; }
+  #print-cv .p-title{ font-size:8.3pt; font-weight:600; color:#2563eb; text-transform:uppercase; letter-spacing:.05em; margin-top:4px; }
+  #print-cv .p-contact{ display:flex; flex-direction:column; align-items:flex-end; gap:2px; font-size:7.8pt; color:#475569; }
+  #print-cv .p-summary{ font-size:8.4pt; color:#334155; margin-bottom:8px; }
   #print-cv .p-summary strong{ color:#0f172a; }
   #print-cv .p-metrics{ display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-bottom:10px; }
-  #print-cv .p-metric{ background:#f8fafc; border:1px solid #e2e8f0; border-radius:5px; padding:6px; text-align:center; }
-  #print-cv .p-metric b{ display:block; font-size:13pt; color:#2563eb; }
-  #print-cv .p-metric span{ font-size:6.3pt; color:#475569; }
-  #print-cv .p-grid{ display:grid; grid-template-columns:1fr 66mm; gap:14px; }
-  #print-cv .p-section-title{ font-size:7pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#2563eb; border-bottom:1px solid #e2e8f0; padding-bottom:4px; margin-bottom:6px; }
+  #print-cv .p-metric{ background:#f8fafc; border:1px solid #e2e8f0; border-radius:5px; padding:5px 6px; text-align:center; }
+  #print-cv .p-metric b{ display:block; font-size:13pt; color:#2563eb; line-height:1.1; }
+  #print-cv .p-metric span{ font-size:6.5pt; color:#475569; }
+  #print-cv .p-grid{ display:grid; grid-template-columns:1fr 64mm; gap:14px; }
+  #print-cv .p-section-title{ font-size:7pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#2563eb; border-bottom:1px solid #e2e8f0; padding-bottom:3px; margin-bottom:6px; }
+  #print-cv .p-section-title.mt{ margin-top:9px; }
   #print-cv .p-exp{ padding-left:10px; border-left:2px solid #e2e8f0; margin-bottom:8px; }
   #print-cv .p-exp-head{ display:flex; justify-content:space-between; gap:6px; }
   #print-cv .p-exp-title{ font-size:9pt; font-weight:700; }
-  #print-cv .p-exp-period{ font-size:7.3pt; font-weight:600; color:#2563eb; background:#eff6ff; padding:1px 5px; border-radius:3px; white-space:nowrap; }
+  #print-cv .p-exp-period{ font-size:7.2pt; font-weight:600; color:#2563eb; background:#eff6ff; padding:1px 5px; border-radius:3px; white-space:nowrap; align-self:flex-start; }
   #print-cv .p-exp-company{ font-size:7.5pt; color:#475569; margin-bottom:3px; }
   #print-cv .p-exp ul{ list-style:none; }
-  #print-cv .p-exp li{ font-size:7.8pt; color:#475569; padding-left:9px; position:relative; margin-bottom:2px; }
+  #print-cv .p-exp li{ font-size:7.8pt; color:#334155; padding-left:9px; position:relative; margin-bottom:2px; }
+  #print-cv .p-exp li strong{ color:#0f172a; }
   #print-cv .p-exp li::before{ content:'▸'; position:absolute; left:0; color:#2563eb; font-size:6.5pt; }
-  #print-cv .p-ai{ background:linear-gradient(135deg,#0f172a,#1e3a5f); border-radius:5px; padding:8px 10px; color:#fff; margin-top:6px; }
-  #print-cv .p-ai b{ font-size:7.3pt; color:#93c5fd; display:block; margin-bottom:2px; }
-  #print-cv .p-ai span{ font-size:6.8pt; color:#94a3b8; line-height:1.4; }
-  #print-cv .p-skill-group{ margin-bottom:6px; }
-  #print-cv .p-skill-label{ font-size:6.8pt; font-weight:700; color:#475569; text-transform:uppercase; letter-spacing:.05em; margin-bottom:3px; }
-  #print-cv .p-tag{ display:inline-block; font-size:7pt; background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe; padding:1px 5px; border-radius:3px; margin:0 2px 2px 0; }
+  #print-cv .p-proj{ margin-bottom:4px; font-size:7.6pt; color:#334155; }
+  #print-cv .p-proj b{ color:#0f172a; font-size:7.9pt; }
+  #print-cv .p-proj .url{ color:#2563eb; font-size:7pt; }
+  #print-cv .p-skill-group{ margin-bottom:5px; }
+  #print-cv .p-skill-label{ font-size:6.8pt; font-weight:700; color:#475569; text-transform:uppercase; letter-spacing:.05em; margin-bottom:2px; }
+  #print-cv .p-tag{ display:inline-block; font-size:7pt; background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe; padding:0 5px; border-radius:3px; margin:0 2px 2px 0; }
   #print-cv .p-tag.strong{ background:#2563eb; color:#fff; border-color:#2563eb; }
-  #print-cv .p-lang-row{ display:flex; align-items:center; gap:6px; margin-bottom:3px; font-size:7.5pt; }
-  #print-cv .p-lang-name{ width:60px; font-weight:600; flex-shrink:0; }
-  #print-cv .p-lang-level{ flex:1; color:#475569; font-size:6.8pt; }
-  #print-cv .p-edu-degree{ font-size:8.3pt; font-weight:700; }
-  #print-cv .p-edu-school{ font-size:7.3pt; color:#475569; }
+  #print-cv .p-lang-row{ display:flex; gap:6px; margin-bottom:2px; font-size:7.5pt; }
+  #print-cv .p-lang-name{ width:58px; font-weight:600; flex-shrink:0; }
+  #print-cv .p-lang-level{ flex:1; color:#475569; font-size:6.9pt; }
+  #print-cv .p-edu-degree{ font-size:8.2pt; font-weight:700; }
+  #print-cv .p-edu-school, #print-cv .p-edu-thesis{ font-size:7.3pt; color:#475569; }
+  #print-cv .p-edu-thesis{ margin-top:3px; }
+  #print-cv .p-edu-thesis strong{ color:#0f172a; }
   #print-cv .p-edu-period{ font-size:7.3pt; color:#2563eb; font-weight:600; }
-  #print-cv .p-cert{ display:flex; gap:5px; margin-bottom:4px; }
-  #print-cv .p-cert .dot{ width:5px; height:5px; border-radius:50%; background:#2563eb; margin-top:4px; flex-shrink:0; }
   #print-cv .p-cert-title{ font-size:7.6pt; font-weight:600; }
   #print-cv .p-cert-issuer{ font-size:7pt; color:#475569; }
 </style>
@@ -591,24 +584,25 @@
     <div class="p-photo"><img src="assets/foto.jpg" alt="Fernando Sanchez" /></div>
     <div>
       <div class="p-name">Fernando Sanchez</div>
-      <div class="p-title" data-i18n="hero_eyebrow">IT Coordinator · .NET Developer · AI-Assisted Engineer</div>
+      <div class="p-title" data-i18n="hero_eyebrow">Tech Lead · .NET / C# · ASP.NET Core · SQL Server</div>
     </div>
     <div class="p-contact">
-      <span>+595 983 240 491</span>
-      <span>fernando_sh99@outlook.com</span>
-      <span>github.com/nandosanchez14</span>
-      <span>linkedin.com/in/fernando-sanchez-hartwig</span>
-      <span data-i18n="hero_meta">Katuété, Canindeyú, Paraguay · Remote-ready</span>
+      <!--PHONE-->
+      <a href="mailto:fernando_sh99@outlook.com">fernando_sh99@outlook.com</a>
+      <a href="https://www.linkedin.com/in/fernando-sanchez-hartwig-8a424b220">linkedin.com/in/fernando-sanchez-hartwig</a>
+      <a href="https://github.com/nandosanchez14">github.com/nandosanchez14</a>
+      <a href="https://nandosanchez14.github.io/cv-portfolio/">nandosanchez14.github.io/cv-portfolio</a>
+      <span data-i18n="hero_meta">Canindeyú, Paraguay · UTC−3 · Remote</span>
     </div>
   </div>
 
-  <p class="p-summary" data-i18n="about_summary">Systems Engineer and IT Coordinator with <strong>6+ years</strong> of hands-on experience...</p>
+  <p class="p-summary" data-i18n="print_summary"></p>
 
   <div class="p-metrics">
-    <div class="p-metric"><b>6+</b><span data-i18n="metric_years">Years in IT</span></div>
-    <div class="p-metric"><b>4</b><span data-i18n="metric_langs">Languages Spoken</span></div>
-    <div class="p-metric"><b>3</b><span data-i18n="metric_certs">Certifications</span></div>
-    <div class="p-metric"><b>10+</b><span data-i18n="metric_ai">AI Tools &amp; Models Used</span></div>
+    <div class="p-metric"><b>6</b><span data-i18n="metric_team">Team members led</span></div>
+    <div class="p-metric"><b>7</b><span data-i18n="metric_modules">System modules delivered</span></div>
+    <div class="p-metric"><b>3</b><span data-i18n="metric_repos">Public .NET APIs</span></div>
+    <div class="p-metric"><b>4</b><span data-i18n="metric_langs">Languages (3 native)</span></div>
   </div>
 
   <div class="p-grid">
@@ -617,79 +611,86 @@
 
       <div class="p-exp">
         <div class="p-exp-head">
-          <div class="p-exp-title" data-i18n="exp1_title">IT Coordinator &amp; .NET Developer</div>
+          <div class="p-exp-title" data-i18n="exp1_title">IT Coordinator · Tech Lead</div>
           <div class="p-exp-period" data-i18n="exp1_period">Apr 2025 — Present</div>
         </div>
-        <div class="p-exp-company" data-i18n="exp1_company">SisPrime Sistemas · Paraguay (On-site / Remote)</div>
+        <div class="p-exp-company" data-i18n="exp1_company">SisPrime Sistemas · Paraguay</div>
         <ul>
-          <li data-i18n="exp1_b1">Lead architecture and development of enterprise web systems in <strong>C#, ASP.NET Core and SQL Server</strong>, focused on availability and scalability.</li>
-          <li data-i18n="exp1_b2">Design REST APIs and internal management modules, integrating third-party services and automating business processes.</li>
-          <li data-i18n="exp1_b3">Apply AI-assisted programming daily — <strong>Claude Code, Antigravity</strong>, GitHub Copilot and Gemini — to accelerate delivery and raise code quality without lowering the bar on review.</li>
-          <li data-i18n="exp1_b4">Manage IT infrastructure: Windows/Linux servers, Active Directory, LAN/WAN, corporate email and backup protocols.</li>
-          <li data-i18n="exp1_b5">Lead the technical team under SCRUM/Kanban, run code reviews and mentor junior developers.</li>
-          <li data-i18n="exp1_b6">Build operational reports and KPIs with SQL Server stored procedures and data visualization.</li>
+          <li data-i18n="exp1_b1"></li>
+          <li data-i18n="exp1_b2"></li>
+          <li data-i18n="exp1_b3"></li>
+          <li data-i18n="exp1_b4"></li>
+          <li data-i18n="exp1_b5"></li>
         </ul>
       </div>
 
       <div class="p-exp">
         <div class="p-exp-head">
-          <div class="p-exp-title" data-i18n="exp2_title">Network Technician</div>
-          <div class="p-exp-period" data-i18n="exp2_period">2021 — 2022</div>
+          <div class="p-exp-title" data-i18n="exp2_title">Administrative Officer</div>
+          <div class="p-exp-period" data-i18n="exp2_period">Jan 2024 — Apr 2025</div>
         </div>
-        <div class="p-exp-company" data-i18n="exp2_company">TempuS Net · Paraguay</div>
+        <div class="p-exp-company" data-i18n="exp2_company">F.E.L. Agro Import Export S.A. · Paraguay</div>
         <ul>
-          <li data-i18n="exp2_b1">Deployed and maintained LAN/WAN and WiFi infrastructure for corporate clients; configured routers, switches and access points.</li>
-          <li data-i18n="exp2_b2">Performed hardware diagnostics and on-site technical support, keeping SLA compliance.</li>
+          <li data-i18n="exp2_b1"></li>
+          <li data-i18n="exp2_b2"></li>
         </ul>
       </div>
 
-      <div class="p-ai">
-        <b data-i18n="ai_title">Engineering with AI, not just around it</b>
-        <span data-i18n="print_ai_desc">Daily use of Claude Code, Antigravity, GitHub Copilot, OpenAI Codex, Claude, GPT and Gemini — plus active tracking of DeepSeek, Qwen and Kimi.</span>
+      <div class="p-exp">
+        <div class="p-exp-head">
+          <div class="p-exp-title" data-i18n="exp3_title">Network Technician</div>
+          <div class="p-exp-period" data-i18n="exp3_period">Oct 2021 — Mar 2022</div>
+        </div>
+        <div class="p-exp-company" data-i18n="exp3_company">Tempus S.A. · Paraguay</div>
+        <ul>
+          <li data-i18n="exp3_b1"></li>
+        </ul>
       </div>
+
+      <div class="p-section-title mt" data-i18n="proj_title">Selected Projects</div>
+      <div class="p-proj"><b>employee-management-api</b> — <span data-i18n="proj1_short"></span></div>
+      <div class="p-proj"><b>ai-smart-notes-api</b> — <span data-i18n="proj2_short"></span></div>
+      <div class="p-proj"><b>task-management-api</b> — <span data-i18n="proj3_short"></span></div>
     </div>
 
     <div>
-      <div class="p-section-title" data-i18n="nav_stack">Tech Stack</div>
+      <div class="p-section-title" data-i18n="stack_title">Tech Stack</div>
       <div class="p-skill-group">
         <div class="p-skill-label" data-i18n="stack_backend">Backend</div>
-        <span class="p-tag strong">C#</span><span class="p-tag strong">ASP.NET Core</span><span class="p-tag strong">.NET</span><span class="p-tag">PHP</span><span class="p-tag">Laravel</span>
+        <span class="p-tag strong">C#</span><span class="p-tag strong">.NET 8/9</span><span class="p-tag strong">ASP.NET Core</span><span class="p-tag">EF Core</span><span class="p-tag">REST APIs</span><span class="p-tag">JWT</span><span class="p-tag">xUnit</span><span class="p-tag">PHP / Laravel</span>
       </div>
       <div class="p-skill-group">
-        <div class="p-skill-label" data-i18n="stack_db">Database</div>
-        <span class="p-tag strong">SQL Server</span><span class="p-tag">MySQL</span><span class="p-tag">EF Core</span><span class="p-tag" data-i18n="stack_storedprocs">Stored Procedures</span>
+        <div class="p-skill-label" data-i18n="stack_db">Data</div>
+        <span class="p-tag strong">SQL Server</span><span class="p-tag">T-SQL</span><span class="p-tag" data-i18n="stack_storedprocs">Stored Procedures</span><span class="p-tag">MySQL</span><span class="p-tag" data-i18n="stack_datamodel">Data Modeling</span>
       </div>
       <div class="p-skill-group">
-        <div class="p-skill-label" data-i18n="stack_frontend">Frontend &amp; APIs</div>
-        <span class="p-tag">JavaScript</span><span class="p-tag">HTML5/CSS3</span><span class="p-tag">REST APIs</span><span class="p-tag">Swagger</span>
+        <div class="p-skill-label" data-i18n="stack_infra">Infrastructure &amp; DevOps</div>
+        <span class="p-tag">Git</span><span class="p-tag">GitHub Actions</span><span class="p-tag">Windows Server</span><span class="p-tag">Linux</span><span class="p-tag">Active Directory</span><span class="p-tag">LAN/WAN</span>
       </div>
       <div class="p-skill-group">
-        <div class="p-skill-label" data-i18n="ai_eyebrow">AI &amp; Dev Tools</div>
-        <span class="p-tag strong">Claude Code</span><span class="p-tag strong">Antigravity</span><span class="p-tag">Copilot</span><span class="p-tag">Codex</span><span class="p-tag">GPT</span><span class="p-tag">Gemini</span><span class="p-tag">DeepSeek</span><span class="p-tag">Qwen</span><span class="p-tag">Kimi</span>
+        <div class="p-skill-label" data-i18n="ai_eyebrow">AI-Assisted Engineering</div>
+        <span class="p-tag strong">Claude Code</span><span class="p-tag strong">GitHub Copilot</span><span class="p-tag">Antigravity</span><span class="p-tag">OpenAI API</span><span class="p-tag" data-i18n="ai_practice_spec">Spec-Driven Development</span>
       </div>
       <div class="p-skill-group">
-        <div class="p-skill-label" data-i18n="stack_infra">Infrastructure</div>
-        <span class="p-tag">Linux</span><span class="p-tag">Windows Server</span><span class="p-tag">Active Directory</span><span class="p-tag">LAN/WAN</span>
+        <div class="p-skill-label" data-i18n="stack_methods">Leadership &amp; Practices</div>
+        <span class="p-tag">Scrum</span><span class="p-tag">Kanban</span><span class="p-tag" data-i18n="stack_codereview">Code Review</span><span class="p-tag" data-i18n="stack_mentoring">Mentoring</span><span class="p-tag" data-i18n="stack_cleanarch">Clean Architecture</span>
       </div>
 
-      <div class="p-section-title" style="margin-top:8px;" data-i18n="nav_languages_title">Languages</div>
+      <div class="p-section-title mt" data-i18n="nav_education_title">Education</div>
+      <div class="p-edu-degree" data-i18n="edu_degree">B.Eng. in Computer Systems Engineering</div>
+      <div class="p-edu-school" data-i18n="edu_school">Universidad Nacional del Caaguazú, Paraguay</div>
+      <div class="p-edu-period" data-i18n="edu_period">2017 — 2023 · Graduated Dec 2023</div>
+      <div class="p-edu-thesis" data-i18n="edu_thesis"></div>
+
+      <div class="p-section-title mt" data-i18n="nav_certs_title">Certifications</div>
+      <div class="p-cert-title" data-i18n="cert1_title">Ethical Hacking — Red Team</div>
+      <div class="p-cert-issuer" data-i18n="cert1_issuer">Hacker Mentor · International</div>
+
+      <div class="p-section-title mt" data-i18n="nav_languages_title">Languages</div>
       <div class="p-lang-row"><span class="p-lang-name" data-i18n="lang_es">Spanish</span><span class="p-lang-level" data-i18n="level_native">Native</span></div>
       <div class="p-lang-row"><span class="p-lang-name" data-i18n="lang_pt">Portuguese</span><span class="p-lang-level" data-i18n="level_native">Native</span></div>
       <div class="p-lang-row"><span class="p-lang-name" data-i18n="lang_gn">Guaraní</span><span class="p-lang-level" data-i18n="level_native">Native</span></div>
-      <div class="p-lang-row"><span class="p-lang-name" data-i18n="lang_en">English</span><span class="p-lang-level" data-i18n="level_en_summary">Reading &amp; Writing: Advanced · Spoken: Conversational</span></div>
-
-      <div class="p-section-title" style="margin-top:8px;" data-i18n="nav_education_title">Education</div>
-      <div class="p-edu-degree" data-i18n="edu_degree">B.Eng. in Computer Systems Engineering</div>
-      <div class="p-edu-school" data-i18n="edu_school">Universidad Nacional del Caaguazú, Paraguay</div>
-      <div class="p-edu-period">2017 — 2023</div>
-
-      <div class="p-section-title" style="margin-top:8px;" data-i18n="nav_certs_title">Certifications</div>
-      <div class="p-cert"><div class="dot"></div><div><div class="p-cert-title" data-i18n="cert1_title">Ethical Hacking — Red Team</div><div class="p-cert-issuer" data-i18n="cert1_issuer">Hacker Mentor · International</div></div></div>
-      <div class="p-cert"><div class="dot"></div><div><div class="p-cert-title" data-i18n="cert2_title">Advanced PC Operator</div><div class="p-cert-issuer">CIE · Katuété</div></div></div>
-      <div class="p-cert"><div class="dot"></div><div><div class="p-cert-title" data-i18n="cert3_title">Computer Technician</div><div class="p-cert-issuer">CIE · Katuété</div></div></div>
-
-      <div class="p-section-title" style="margin-top:8px;" data-i18n="stack_methods">Methodologies</div>
-      <span class="p-tag">SCRUM</span><span class="p-tag">Kanban</span><span class="p-tag" data-i18n="stack_cleanarch">Clean Architecture</span><span class="p-tag" data-i18n="stack_repopattern">Repository Pattern</span><span class="p-tag" data-i18n="stack_itsec">IT Security</span><span class="p-tag" data-i18n="stack_datamodel">Data Modeling</span>
+      <div class="p-lang-row"><span class="p-lang-name" data-i18n="lang_en">English</span><span class="p-lang-level" data-i18n="level_en_short">Advanced reading/writing · Conversational speaking</span></div>
     </div>
   </div>
 </div>
@@ -702,112 +703,124 @@
       nav_about:"About", nav_experience:"Experience", nav_stack:"Stack", nav_ai:"AI", nav_projects:"Projects", nav_contact:"Contact", nav_resume:"Resume",
       nav_education_title:"Education", nav_certs_title:"Certifications", nav_languages_title:"Languages",
 
-      hero_eyebrow:"IT Coordinator · .NET Developer · AI-Assisted Engineer",
-      hero_lede:"I build reliable enterprise systems in C# and .NET, lead technical teams, and ship faster by pairing with AI — Claude Code, Antigravity, Copilot and beyond — without cutting corners on quality.",
-      hero_meta:"Katuété, Canindeyú, Paraguay · Remote-ready",
-      hero_cta_primary:"Download CV", hero_cta_secondary:"Get in touch", hero_badge:"Open to remote work",
+      hero_eyebrow:"Tech Lead · .NET / C# · ASP.NET Core · SQL Server",
+      hero_lede:"I lead a cross-functional team of six building enterprise systems in C# and .NET — from data model and API design to delivery — and use AI-assisted engineering to ship faster without lowering the bar on quality.",
+      hero_meta:"Canindeyú, Paraguay · UTC−3 · Remote",
+      hero_cta_primary:"Download CV", hero_cta_secondary:"Get in touch", hero_badge:"Leading a team of 6",
 
       about_eyebrow:"Profile", about_title:"About me",
-      about_summary:"Systems Engineer and IT Coordinator with <strong>6+ years</strong> of hands-on experience in enterprise software development and technology leadership. Core expertise in <strong>C#, ASP.NET Core, .NET and SQL Server</strong> — designing REST APIs, internal platforms and data-driven systems from architecture to deployment. Currently leading IT operations at SisPrime Sistemas, where I manage cross-functional teams and infrastructure end to end. A committed practitioner of <strong>AI-assisted engineering</strong>: I use coding agents and LLMs daily to move faster, review more code, and keep quality high — not to replace engineering judgment, but to extend it.",
-      metric_years:"Years in IT", metric_langs:"Languages Spoken", metric_certs:"Certifications", metric_ai:"AI Tools &amp; Models Used",
+      about_summary:"Systems Engineer and Tech Lead. I coordinate IT at an ERP software company, leading a team of six — three developers, QA, DevOps and support — and own the architecture and delivery of a <strong>7-module enterprise system</strong> built on <strong>C#, ASP.NET Core and SQL Server</strong>. My path runs from networking and infrastructure to business operations to full-stack development, so I make decisions with the whole system — and the people using it — in view. I treat <strong>AI-assisted engineering</strong> as a team practice: agents speed up the work, while specs, code review and tests keep the quality bar where it belongs.",
+      print_summary:"Systems Engineer and Tech Lead leading a cross-functional team of <strong>6</strong> (developers, QA, DevOps, support) at an ERP software company. Own architecture and delivery of a <strong>7-module enterprise system</strong> in <strong>C#, ASP.NET Core and SQL Server</strong>, replacing spreadsheet-based operations with reliable, validated workflows. Background across networking, infrastructure and business operations. Brings <strong>AI-assisted engineering</strong> into the team's daily workflow — with specs, code review and tests as the quality gate.",
+      metric_team:"Team members led", metric_modules:"System modules delivered", metric_repos:"Public .NET APIs", metric_langs:"Languages (3 native)",
 
       exp_eyebrow:"Career",
-      exp1_title:"IT Coordinator &amp; .NET Developer", exp1_period:"Apr 2025 — Present", exp1_company:"SisPrime Sistemas · Paraguay (On-site / Remote)",
-      exp1_b1:"Lead architecture and development of enterprise web systems in <strong>C#, ASP.NET Core and SQL Server</strong>, focused on availability and scalability.",
-      exp1_b2:"Design REST APIs and internal management modules, integrating third-party services and automating business processes.",
-      exp1_b3:"Apply AI-assisted programming daily — <strong>Claude Code, Antigravity</strong>, GitHub Copilot and Gemini — to accelerate delivery and raise code quality without lowering the bar on review.",
-      exp1_b4:"Manage IT infrastructure: Windows/Linux servers, Active Directory, LAN/WAN, corporate email and backup protocols.",
-      exp1_b5:"Lead the technical team under SCRUM/Kanban, run code reviews and mentor junior developers.",
-      exp1_b6:"Build operational reports and KPIs with SQL Server stored procedures and data visualization.",
-      exp2_title:"Network Technician", exp2_period:"2021 — 2022", exp2_company:"TempuS Net · Paraguay",
-      exp2_b1:"Deployed and maintained LAN/WAN and WiFi infrastructure for corporate clients; configured routers, switches and access points.",
-      exp2_b2:"Performed hardware diagnostics and on-site technical support, keeping SLA compliance.",
+      exp1_title:"IT Coordinator · Tech Lead", exp1_period:"Apr 2025 — Present", exp1_company:"SisPrime Sistemas · ERP software, 40+ business clients · Paraguay",
+      exp1_b1:"Lead a cross-functional team of <strong>6</strong> — 3 developers, QA, DevOps and support — running planning under Scrum/Kanban, code reviews and mentoring.",
+      exp1_b2:"Own architecture and delivery of a <strong>7-module enterprise system</strong> in C#, ASP.NET Core and SQL Server: data model, REST APIs, integrations, reporting (stored procedures, KPIs) and a modernized UI.",
+      exp1_b3:"Replaced spreadsheet-driven processes with validated end-to-end workflows, <strong>eliminating manual re-entry errors</strong> and shortening delivery times for client operations.",
+      exp1_b4:"Introduced <strong>AI-assisted development</strong> (Claude Code, GitHub Copilot) into the team workflow with review and testing gates, substantially cutting time spent on routine implementation.",
+      exp1_b5:"Run company IT: Windows/Linux servers, Active Directory, LAN/WAN, corporate email and backups.",
+      exp2_title:"Administrative Officer", exp2_period:"Jan 2024 — Apr 2025", exp2_company:"F.E.L. Agro Import Export S.A. · Paraguay",
+      exp2_b1:"Ran administrative operations for an agricultural import/export company — the business processes I now digitize as an engineer.",
+      exp2_b2:"Built small AI-assisted control tools that <strong>replaced manual spreadsheets</strong> for internal tracking and reduced errors.",
+      exp3_title:"Network Technician", exp3_period:"Oct 2021 — Mar 2022", exp3_company:"Tempus S.A. · Paraguay",
+      exp3_b1:"Deployed and maintained LAN/WAN and Wi-Fi for corporate clients (routers, switches, access points) and provided on-site support within SLA.",
 
-      stack_eyebrow:"Toolbox", stack_backend:"Backend", stack_db:"Database", stack_frontend:"Frontend &amp; APIs", stack_infra:"Infrastructure", stack_methods:"Methodologies",
-      stack_storedprocs:"Stored Procedures", stack_cleanarch:"Clean Architecture", stack_repopattern:"Repository Pattern", stack_itsec:"IT Security", stack_datamodel:"Data Modeling",
+      proj_eyebrow:"Work", proj_title:"Selected Projects", proj_intro:"Public repositories and academic work. Production systems I lead at work are proprietary and summarized under Experience.",
+      proj_link:"View on GitHub →",
+      proj1_desc:"HR REST API in ASP.NET Core 9 with role-based JWT (Admin / Manager / Employee), headcount and salary reports, CSV export, xUnit tests and GitHub Actions CI.",
+      proj2_desc:"Notes API with LLM features: GPT-4o summaries, urgency classification and semantic tagging, per-user isolation, and a demo fallback when no API key is configured.",
+      proj3_desc:"Task API with JWT auth, filtering and pagination, global error handling and a layered Controller → Service → Repository design, covered by xUnit tests.",
+      proj4_title:"Higher Education Map of Paraguay",
+      proj4_desc:"Interactive map of higher-education institutions in Paraguay up to 2023 — geospatial data on Leaflet.js over a Laravel back end.",
+      proj4_badge:"Undergraduate thesis · 2023",
+      proj1_short:"HR API, .NET 9, role-based JWT, reports, CSV export, xUnit + CI.",
+      proj2_short:"Notes API with GPT-4o summaries, classification and tagging; xUnit + CI.",
+      proj3_short:"Task API, .NET 9, JWT, layered architecture, xUnit + CI.",
+      tag_repopattern:"Repository Pattern",
 
-      ai_eyebrow:"AI-Assisted Engineering", ai_title:"Engineering with AI, not just around it",
-      ai_intro:"AI is part of how I design, write and review software every day — from planning a feature to shipping it. I keep a close eye on the fast-moving model landscape so I always reach for the right tool for the job.",
-      ai_cat1_title:"Coding Agents &amp; IDEs", ai_cat1_desc:"Agentic pair programming for real feature work — from scaffolding to refactors to debugging production issues.",
-      ai_cat2_title:"LLMs &amp; Chat Models", ai_cat2_desc:"Daily drivers for architecture discussions, documentation, code review and problem-solving.",
-      ai_cat3_title:"Emerging Models I Track", ai_cat3_desc:"Staying current with the broader model ecosystem, including leading Chinese labs, to evaluate cost/performance trade-offs.",
-      ai_practice_agentic:"Agentic Development", ai_practice_spec:"Spec-Driven Development",
-      print_ai_desc:"Daily use of Claude Code, Antigravity, GitHub Copilot, OpenAI Codex, Claude, GPT and Gemini — plus active tracking of DeepSeek, Qwen and Kimi.",
+      stack_eyebrow:"Toolbox", stack_title:"Tech Stack", stack_backend:"Backend", stack_db:"Data", stack_frontend:"Frontend", stack_infra:"Infrastructure &amp; DevOps", stack_methods:"Leadership &amp; Practices",
+      stack_storedprocs:"Stored Procedures", stack_cleanarch:"Clean Architecture", stack_itsec:"IT Security", stack_datamodel:"Data Modeling", stack_codereview:"Code Review", stack_mentoring:"Mentoring",
 
-      proj_eyebrow:"Work", proj_title:"Selected Projects", proj_intro:"Proprietary enterprise systems built at SisPrime Sistemas — described here since the code isn't public.",
-      proj1_title:"SisTransp — Fleet &amp; Carrier Management System",
-      proj1_desc:"End-to-end platform for managing carrier and in-house fleet operations: load orders, driver commissions, per-diem allowances, maintenance tracking and monthly settlement runs — replacing manual spreadsheets with a single source of truth.",
-      proj2_title:"Textile Production Control Module",
-      proj2_desc:"Production-tracking module for a textile manufacturing line: from raw yarn intake and batch loading through spinning/weaving stages to finished-goods output, monitoring yield, waste and machine downtime in real time for plant supervisors.",
-      proj3_title:"Enterprise UI Modernization",
-      proj3_desc:"Full front-end refactor of the company's core system: rebuilt legacy screens with a modern, componentized UI, a consistent design language and richer interactivity — improving usability and cutting training time for new operators.",
-      proj_badge:"Internal project · SisPrime Sistemas",
+      ai_eyebrow:"AI-Assisted Engineering", ai_title:"AI as a team practice",
+      ai_intro:"I started using AI to replace spreadsheets with small internal tools, and today it's part of how my team plans, writes, tests and reviews software. The rule doesn't change: every AI-generated change goes through review and tests.",
+      ai_cat1_title:"Tools", ai_cat1_desc:"Coding agents and models I use day to day.",
+      ai_cat2_title:"How I use them", ai_cat2_desc:"Spec first, agent second, human review always.",
+      ai_practice_spec:"Spec-Driven Development", ai_practice_agentic:"Agentic Workflows", ai_practice_review:"AI-Assisted Code Review", ai_practice_api:"LLM API Integration",
 
       edu_eyebrow:"Academics", edu_degree:"B.Eng. in Computer Systems Engineering", edu_school:"Universidad Nacional del Caaguazú, Paraguay",
+      edu_period:"2017 — 2023 · Graduated Dec 2023",
+      edu_thesis:"<strong>Thesis:</strong> Interactive map of higher education in Paraguay up to 2023 (PHP, Laravel, Leaflet.js).",
       certs_eyebrow:"Credentials",
       cert1_title:"Ethical Hacking — Red Team", cert1_issuer:"Hacker Mentor · International",
-      cert2_title:"Advanced PC Operator", cert3_title:"Computer Technician",
 
       lang_eyebrow:"Communication", lang_es:"Spanish", lang_pt:"Portuguese", lang_gn:"Guaraní", lang_en:"English",
       level_native:"Native", level_en_summary:"Reading &amp; Writing: Advanced · Spoken: Conversational",
+      level_en_short:"Advanced reading/writing · Conversational speaking",
 
-      contact_title:"Let's talk", contact_text:"Open to remote .NET / backend engineering roles where AI-assisted delivery is valued. Reach out — I reply fast.",
+      contact_title:"Let's talk", contact_text:"Questions about my work or a project? Email or LinkedIn is the fastest way to reach me.",
       footer_credit:"Designed &amp; built by <strong>Fernando Sanchez</strong>, with AI-assisted engineering."
     },
     es:{
       nav_about:"Sobre mí", nav_experience:"Experiencia", nav_stack:"Stack", nav_ai:"IA", nav_projects:"Proyectos", nav_contact:"Contacto", nav_resume:"Currículum",
       nav_education_title:"Educación", nav_certs_title:"Certificaciones", nav_languages_title:"Idiomas",
 
-      hero_eyebrow:"Coordinador de TI · Desarrollador .NET · Ingeniero AI-Assisted",
-      hero_lede:"Construyo sistemas empresariales confiables en C# y .NET, lidero equipos técnicos, y entrego más rápido trabajando junto a IA — Claude Code, Antigravity, Copilot y más — sin resignar calidad.",
-      hero_meta:"Katuété, Canindeyú, Paraguay · Disponible para remoto",
-      hero_cta_primary:"Descargar CV", hero_cta_secondary:"Contactarme", hero_badge:"Disponible para remoto",
+      hero_eyebrow:"Tech Lead · .NET / C# · ASP.NET Core · SQL Server",
+      hero_lede:"Lidero un equipo multidisciplinario de seis personas que construye sistemas empresariales en C# y .NET — del modelo de datos y el diseño de APIs hasta la entrega — y uso ingeniería asistida por IA para entregar más rápido sin bajar el estándar de calidad.",
+      hero_meta:"Canindeyú, Paraguay · UTC−3 · Remoto",
+      hero_cta_primary:"Descargar CV", hero_cta_secondary:"Contacto", hero_badge:"Liderando un equipo de 6",
 
       about_eyebrow:"Perfil", about_title:"Sobre mí",
-      about_summary:"Ingeniero en Sistemas y Coordinador de TI con <strong>más de 6 años</strong> de experiencia práctica en desarrollo de software empresarial y liderazgo tecnológico. Especializado en <strong>C#, ASP.NET Core, .NET y SQL Server</strong> — diseñando APIs REST, plataformas internas y sistemas basados en datos, de punta a punta. Actualmente lidero las operaciones de TI en SisPrime Sistemas, gestionando equipos multidisciplinarios e infraestructura. Practico la <strong>ingeniería asistida por IA</strong> de forma consciente: uso agentes de código y LLMs a diario para avanzar más rápido, revisar más código y mantener la calidad — no para reemplazar el criterio técnico, sino para potenciarlo.",
-      metric_years:"Años en TI", metric_langs:"Idiomas", metric_certs:"Certificaciones", metric_ai:"Herramientas y Modelos de IA",
+      about_summary:"Ingeniero en Sistemas y Tech Lead. Coordino TI en una empresa de software ERP, lidero un equipo de seis personas — tres desarrolladores, QA, DevOps y soporte — y soy responsable de la arquitectura y la entrega de un <strong>sistema empresarial de 7 módulos</strong> en <strong>C#, ASP.NET Core y SQL Server</strong>. Mi recorrido va de redes e infraestructura a operaciones administrativas y desarrollo full-stack, por eso tomo decisiones mirando el sistema completo — y a las personas que lo usan. Aplico la <strong>ingeniería asistida por IA</strong> como práctica de equipo: los agentes aceleran el trabajo; las especificaciones, el code review y los tests sostienen la calidad.",
+      print_summary:"Ingeniero en Sistemas y Tech Lead al frente de un equipo multidisciplinario de <strong>6</strong> personas (desarrollo, QA, DevOps, soporte) en una empresa de software ERP. Responsable de la arquitectura y la entrega de un <strong>sistema empresarial de 7 módulos</strong> en <strong>C#, ASP.NET Core y SQL Server</strong>, reemplazando operaciones basadas en planillas por flujos confiables y validados. Experiencia previa en redes, infraestructura y operaciones administrativas. Incorporé la <strong>ingeniería asistida por IA</strong> al trabajo diario del equipo, con especificaciones, code review y tests como control de calidad.",
+      metric_team:"Personas a cargo", metric_modules:"Módulos entregados", metric_repos:"APIs .NET públicas", metric_langs:"Idiomas (3 nativos)",
 
       exp_eyebrow:"Trayectoria",
-      exp1_title:"Coordinador de TI &amp; Desarrollador .NET", exp1_period:"Abr 2025 — Actualidad", exp1_company:"SisPrime Sistemas · Paraguay (Presencial / Remoto)",
-      exp1_b1:"Lidero la arquitectura y el desarrollo de sistemas web empresariales en <strong>C#, ASP.NET Core y SQL Server</strong>, priorizando disponibilidad y escalabilidad.",
-      exp1_b2:"Diseño APIs REST y módulos internos de gestión, integrando servicios de terceros y automatizando procesos de negocio.",
-      exp1_b3:"Aplico programación asistida por IA a diario — <strong>Claude Code, Antigravity</strong>, GitHub Copilot y Gemini — para acelerar la entrega y elevar la calidad del código sin bajar el estándar de revisión.",
-      exp1_b4:"Administro la infraestructura de TI: servidores Windows/Linux, Active Directory, LAN/WAN, correo corporativo y protocolos de backup.",
-      exp1_b5:"Lidero el equipo técnico bajo SCRUM/Kanban, realizo code reviews y mentorizo desarrolladores junior.",
-      exp1_b6:"Genero reportes operativos y KPIs con stored procedures de SQL Server y visualización de datos.",
-      exp2_title:"Técnico en Redes", exp2_period:"2021 — 2022", exp2_company:"TempuS Net · Paraguay",
-      exp2_b1:"Implementé y mantuve infraestructura LAN/WAN y WiFi para clientes corporativos; configuré routers, switches y access points.",
-      exp2_b2:"Realicé diagnóstico de hardware y soporte técnico en sitio, cumpliendo los SLA acordados.",
+      exp1_title:"Coordinador de TI · Tech Lead", exp1_period:"Abr 2025 — Actualidad", exp1_company:"SisPrime Sistemas · Software ERP, +40 empresas cliente · Paraguay",
+      exp1_b1:"Lidero un equipo multidisciplinario de <strong>6</strong> personas — 3 desarrolladores, QA, DevOps y soporte — con planificación Scrum/Kanban, code reviews y mentoría.",
+      exp1_b2:"Responsable de la arquitectura y la entrega de un <strong>sistema empresarial de 7 módulos</strong> en C#, ASP.NET Core y SQL Server: modelo de datos, APIs REST, integraciones, reportes (stored procedures, KPIs) y una UI modernizada.",
+      exp1_b3:"Reemplacé procesos basados en planillas por flujos validados de punta a punta, <strong>eliminando errores de carga manual</strong> y acortando los tiempos de entrega de las operaciones de los clientes.",
+      exp1_b4:"Incorporé el <strong>desarrollo asistido por IA</strong> (Claude Code, GitHub Copilot) al flujo del equipo, con revisión y tests como control, reduciendo de forma significativa el tiempo de implementación rutinaria.",
+      exp1_b5:"Administro la TI de la empresa: servidores Windows/Linux, Active Directory, LAN/WAN, correo corporativo y backups.",
+      exp2_title:"Encargado Administrativo", exp2_period:"Ene 2024 — Abr 2025", exp2_company:"F.E.L. Agro Import Export S.A. · Paraguay",
+      exp2_b1:"Gestioné las operaciones administrativas de una empresa agroexportadora — los mismos procesos de negocio que hoy digitalizo como ingeniero.",
+      exp2_b2:"Desarrollé pequeñas herramientas de control asistidas por IA que <strong>reemplazaron planillas manuales</strong> de seguimiento interno y redujeron errores.",
+      exp3_title:"Técnico en Redes", exp3_period:"Oct 2021 — Mar 2022", exp3_company:"Tempus S.A. · Paraguay",
+      exp3_b1:"Implementé y mantuve redes LAN/WAN y WiFi para clientes corporativos (routers, switches, access points) y brindé soporte en sitio cumpliendo los SLA.",
 
-      stack_eyebrow:"Herramientas", stack_backend:"Backend", stack_db:"Bases de Datos", stack_frontend:"Frontend &amp; APIs", stack_infra:"Infraestructura", stack_methods:"Metodologías",
-      stack_storedprocs:"Stored Procedures", stack_cleanarch:"Clean Architecture", stack_repopattern:"Repository Pattern", stack_itsec:"Seguridad TI", stack_datamodel:"Modelado de Datos",
+      proj_eyebrow:"Trabajo", proj_title:"Proyectos Destacados", proj_intro:"Repositorios públicos y trabajo académico. Los sistemas de producción que lidero son propietarios y se resumen en Experiencia.",
+      proj_link:"Ver en GitHub →",
+      proj1_desc:"API REST de RR. HH. en ASP.NET Core 9 con JWT por roles (Admin / Manager / Employee), reportes de dotación y salarios, exportación CSV, tests xUnit y CI con GitHub Actions.",
+      proj2_desc:"API de notas con funciones de LLM: resúmenes con GPT-4o, clasificación de urgencia y etiquetado semántico, aislamiento por usuario y modo demo cuando no hay API key.",
+      proj3_desc:"API de tareas con autenticación JWT, filtros y paginación, manejo global de errores y diseño en capas Controller → Service → Repository, cubierta con tests xUnit.",
+      proj4_title:"Mapa de la Educación Superior en Paraguay",
+      proj4_desc:"Mapa interactivo de las instituciones de educación superior del Paraguay hasta 2023 — datos geoespaciales con Leaflet.js sobre un backend Laravel.",
+      proj4_badge:"Tesis de grado · 2023",
+      proj1_short:"API de RR. HH., .NET 9, JWT por roles, reportes, CSV, xUnit + CI.",
+      proj2_short:"API de notas con resúmenes, clasificación y etiquetado vía GPT-4o; xUnit + CI.",
+      proj3_short:"API de tareas, .NET 9, JWT, arquitectura en capas, xUnit + CI.",
+      tag_repopattern:"Repository Pattern",
 
-      ai_eyebrow:"Ingeniería Asistida por IA", ai_title:"Ingeniería con IA, no solo alrededor de ella",
-      ai_intro:"La IA es parte de cómo diseño, escribo y reviso software todos los días — desde planificar una funcionalidad hasta llevarla a producción. Sigo de cerca el panorama de modelos, que cambia rápido, para elegir siempre la herramienta correcta para cada tarea.",
-      ai_cat1_title:"Agentes de Código &amp; IDEs", ai_cat1_desc:"Programación en pareja agéntica para trabajo real — desde el scaffolding hasta refactors y debugging en producción.",
-      ai_cat2_title:"LLMs &amp; Modelos de Chat", ai_cat2_desc:"Uso diario para discusiones de arquitectura, documentación, revisión de código y resolución de problemas.",
-      ai_cat3_title:"Modelos Emergentes que Sigo", ai_cat3_desc:"Me mantengo al día con el ecosistema más amplio de modelos, incluyendo laboratorios chinos líderes, para evaluar la relación costo/rendimiento.",
-      ai_practice_agentic:"Desarrollo Agéntico", ai_practice_spec:"Desarrollo Spec-Driven",
-      print_ai_desc:"Uso diario de Claude Code, Antigravity, GitHub Copilot, OpenAI Codex, Claude, GPT y Gemini — además de seguimiento activo de DeepSeek, Qwen y Kimi.",
+      stack_eyebrow:"Herramientas", stack_title:"Stack Técnico", stack_backend:"Backend", stack_db:"Datos", stack_frontend:"Frontend", stack_infra:"Infraestructura y DevOps", stack_methods:"Liderazgo y Prácticas",
+      stack_storedprocs:"Stored Procedures", stack_cleanarch:"Clean Architecture", stack_itsec:"Seguridad TI", stack_datamodel:"Modelado de Datos", stack_codereview:"Code Review", stack_mentoring:"Mentoría",
 
-      proj_eyebrow:"Trabajo", proj_title:"Proyectos Destacados", proj_intro:"Sistemas empresariales propietarios desarrollados en SisPrime Sistemas — descritos aquí ya que el código no es público.",
-      proj1_title:"SisTransp — Sistema de Gestión de Transportadoras y Flota",
-      proj1_desc:"Plataforma integral para la gestión de transportadoras y flota propia: órdenes de carga, comisiones de choferes, viáticos, control de mantenimientos y liquidaciones mensuales — reemplazando planillas manuales por una única fuente de verdad.",
-      proj2_title:"Módulo de Control de Producción Industrial (Textil)",
-      proj2_desc:"Módulo de seguimiento de producción para una línea textil: desde la carga de hilos y lotes de materia prima, pasando por las etapas de hilado/tejido, hasta la salida de producto terminado — con seguimiento en tiempo real de rendimiento, desperdicio y paradas de máquina para los supervisores de planta.",
-      proj3_title:"Modernización de UI Empresarial",
-      proj3_desc:"Refactorización integral del frontend del sistema principal de la empresa: pantallas heredadas reconstruidas con una UI moderna y componentizada, lenguaje visual consistente e interactividad más rica — mejorando la usabilidad y reduciendo el tiempo de capacitación de nuevos operadores.",
-      proj_badge:"Proyecto interno · SisPrime Sistemas",
+      ai_eyebrow:"Ingeniería Asistida por IA", ai_title:"La IA como práctica de equipo",
+      ai_intro:"Empecé usando IA para reemplazar planillas con pequeñas herramientas internas; hoy es parte de cómo mi equipo planifica, escribe, prueba y revisa software. La regla no cambia: todo cambio generado con IA pasa por revisión y tests.",
+      ai_cat1_title:"Herramientas", ai_cat1_desc:"Agentes de código y modelos que uso a diario.",
+      ai_cat2_title:"Cómo las uso", ai_cat2_desc:"Primero la especificación, después el agente, siempre revisión humana.",
+      ai_practice_spec:"Desarrollo Spec-Driven", ai_practice_agentic:"Flujos Agénticos", ai_practice_review:"Code Review asistido por IA", ai_practice_api:"Integración de APIs de LLM",
 
       edu_eyebrow:"Formación", edu_degree:"Ingeniería en Sistemas Informáticos", edu_school:"Universidad Nacional del Caaguazú, Paraguay",
+      edu_period:"2017 — 2023 · Egresado en dic. 2023",
+      edu_thesis:"<strong>Tesis:</strong> Mapa interactivo sobre la educación superior en el Paraguay hasta 2023 (PHP, Laravel, Leaflet.js).",
       certs_eyebrow:"Credenciales",
       cert1_title:"Ethical Hacking — Red Team", cert1_issuer:"Hacker Mentor · Internacional",
-      cert2_title:"Operador Avanzado", cert3_title:"Técnico en Computadora",
 
       lang_eyebrow:"Comunicación", lang_es:"Español", lang_pt:"Portugués", lang_gn:"Guaraní", lang_en:"Inglés",
       level_native:"Nativo", level_en_summary:"Lectura y escritura: Avanzado · Oral: Conversacional",
+      level_en_short:"Lectura/escritura avanzada · Oral conversacional",
 
-      contact_title:"Hablemos", contact_text:"Disponible para roles remotos de desarrollo .NET / backend donde se valore la entrega asistida por IA. Escribime — respondo rápido.",
+      contact_title:"Hablemos", contact_text:"¿Consultas sobre mi trabajo o un proyecto? Email o LinkedIn son la forma más rápida de contactarme.",
       footer_credit:"Diseñado y construido por <strong>Fernando Sanchez</strong>, con ingeniería asistida por IA."
     }
   };
@@ -830,7 +843,8 @@
 
   var saved = 'en';
   try{ saved = localStorage.getItem('fs-cv-lang') || 'en'; }catch(e){}
-  applyLang(saved);
+  var forced = (location.search.match(/[?&]lang=(en|es)\b/) || [])[1];
+  applyLang(forced || saved);
 
   if('IntersectionObserver' in window){
     var io = new IntersectionObserver(function(entries){

@@ -1,26 +1,29 @@
-# Fernando Sanchez — CV / Portfolio
+# Fernando Sanchez — Portfolio & CV
 
-A single self-contained `index.html`: a dark, modern developer portfolio for GitHub Pages that doubles as a one-page, print-ready CV (great for job applications and as a LinkedIn "Featured" PDF).
+Tech Lead · .NET / C# · ASP.NET Core · SQL Server
 
-## View it
+**Live:** https://nandosanchez14.github.io/cv-portfolio/
 
-Open `index.html` in any browser — no build step, no dependencies.
-
-To publish on GitHub Pages: push this folder to a repo and enable Pages on the `main` branch (root), or rename this repo to `nandosanchez14.github.io` for a personal domain.
+A single self-contained `index.html` (no build step, no dependencies) that serves as a bilingual (EN/ES) portfolio and doubles as a one-page, print-ready A4 CV.
 
 ## Get the PDF
 
-Click **Download CV** (top-right / hero button) or press `Ctrl+P` — the print stylesheet swaps in a clean, ATS-friendly one-page A4 layout automatically. Save as PDF from the print dialog.
+Click **Download CV** or press `Ctrl+P` — the print stylesheet swaps in the one-page CV layout. Save as PDF from the print dialog.
+
+Force a language with `?lang=en` or `?lang=es`, e.g. to export each version:
+
+```
+chrome --headless --no-pdf-header-footer --print-to-pdf=CV_EN.pdf "index.html?lang=en"
+```
 
 ## Editing content
 
-- All text lives in the `translations` object near the bottom of `index.html` (search for `var translations = {`). Each entry has an `en` and `es` value — edit either and the on-screen copy updates for that language.
-- Language toggle preference is remembered per-browser via `localStorage`.
+- All copy lives in the `translations` object at the bottom of `index.html` (`en` and `es` entries). The portfolio and the printable CV (`#print-cv`) share the same keys, so they stay in sync.
+- The phone number is intentionally not published on the site. The private PDF build injects it at the `<!--PHONE-->` marker.
+- Photo: `assets/foto.jpg`.
 
-## Adding real projects
+## Related repositories
 
-The **Selected Projects** section (`id="projects"`) currently has 3 placeholder cards. Replace each `.project-empty` block with a real card: project name, one-line impact statement, tech stack tags, and a link to the live repo/demo.
-
-## Updating the photo
-
-Replace `assets/foto.jpg` with a new image (keep the same filename, or update the `src` in the `.hero-photo img` tag).
+- [employee-management-api](https://github.com/nandosanchez14/employee-management-api) — HR REST API, .NET 9, role-based JWT, reports, xUnit + CI
+- [ai-smart-notes-api](https://github.com/nandosanchez14/ai-smart-notes-api) — Notes API with GPT-4o summaries, classification and tagging
+- [task-management-api](https://github.com/nandosanchez14/task-management-api) — Task API, .NET 9, JWT, layered architecture
